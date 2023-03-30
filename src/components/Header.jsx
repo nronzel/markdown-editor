@@ -1,4 +1,4 @@
-import { Button, Flex, HStack, Heading } from "@chakra-ui/react";
+import { Button, Flex, HStack, Heading, useColorModeValue } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { auth } from "../config/firebase";
@@ -23,7 +23,13 @@ const Header = () => {
   };
 
   return (
-    <Flex w="100%" h="70px" justifyContent="center">
+    <Flex
+      w="100%"
+      h="70px"
+      justifyContent="center"
+      borderBottom="1px solid"
+      borderColor={useColorModeValue("gray.300", "gray.600")}
+    >
       <Flex w="80%" h="100%" justifyContent="space-between" alignItems="center">
         <Heading>
           <NavLink to="/">Markdown Editor</NavLink>
