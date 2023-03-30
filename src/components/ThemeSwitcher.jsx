@@ -8,7 +8,7 @@ function ThemeSwitcher() {
     <Button
       aria-label="toggle theme"
       onClick={toggleColorMode}
-      size="md"
+      size="sm"
       variant="outline"
     >
       {colorMode === "dark" ? (
