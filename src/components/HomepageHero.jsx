@@ -7,7 +7,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { AuthContext } from "../config/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const HomepageHero = () => {
   const [email, setEmail] = useState("");
@@ -72,6 +72,9 @@ const HomepageHero = () => {
               {currentUser ? "Log Out" : "Sign In"}
             </Button>
             <Button onClick={signInWithGoogle}>Sign In With Google</Button>
+            <Text fontSize="xs" color="gray.400">
+              <NavLink to="/signup">Need an account? Sign Up!</NavLink>
+            </Text>
           </>
         )}
       </Flex>
