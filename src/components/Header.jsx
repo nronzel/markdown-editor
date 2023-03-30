@@ -1,10 +1,12 @@
-import { Button, Flex, Heading } from "@chakra-ui/react";
+import { Button, Flex, HStack, Heading } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../config/AuthProvider";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -24,8 +26,16 @@ const Header = () => {
     <Flex w="100%" h="70px" justifyContent="center">
       <Flex w="80%" h="100%" justifyContent="space-between" alignItems="center">
         <Heading>Markdown Editor</Heading>
-        <ThemeSwitcher />
-        {currentUser ? <Button onClick={logOut}>Log Out</Button> : ""}
+        <HStack>
+          <ThemeSwitcher />
+          {currentUser ? (
+            <Button size="sm" onClick={logOut}>
+              <FontAwesomeIcon icon={faArrowRightFromBracket} size="lg" />
+            </Button>
+          ) : (
+            ""
+          )}
+        </HStack>
       </Flex>
     </Flex>
   );
