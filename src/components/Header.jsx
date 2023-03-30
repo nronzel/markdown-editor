@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../config/AuthProvider";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,7 +25,9 @@ const Header = () => {
   return (
     <Flex w="100%" h="70px" justifyContent="center">
       <Flex w="80%" h="100%" justifyContent="space-between" alignItems="center">
-        <Heading>Markdown Editor</Heading>
+        <Heading>
+          <NavLink to="/">Markdown Editor</NavLink>
+        </Heading>
         <HStack>
           <ThemeSwitcher />
           {currentUser ? (
