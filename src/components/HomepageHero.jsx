@@ -1,4 +1,11 @@
-import { Button, Divider, Flex, Input, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Divider,
+  Flex,
+  Input,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import React, { useState, useContext } from "react";
 import { auth, googleProvider } from "../config/firebase";
 import {
@@ -47,7 +54,13 @@ const HomepageHero = () => {
   };
 
   return (
-    <Flex justifyContent="center" gap={7} h="450px">
+    <Flex
+      justifyContent="center"
+      gap={7}
+      h="450px"
+      borderBottom="1px solid"
+      borderColor={useColorModeValue("gray.300", "gray.600")}
+    >
       <Flex alignItems="center">
         <Text>Edit and save Markdown files right in your browser!</Text>
       </Flex>
@@ -57,21 +70,32 @@ const HomepageHero = () => {
           <Text>Welcome!</Text>
         ) : (
           <>
-            <Text textAlign="center">Sign In</Text>
+            <Text mt={9} textAlign="center">
+              Sign In
+            </Text>
+            <label>Email</label>
             <Input
               type="email"
-              placeholder="email"
+              errorBorderColor="red.300"
+              placeholder="example@example.com"
               onChange={(e) => setEmail(e.target.value)}
+              mt={-3}
+              required
             />
+            <label>Password</label>
             <Input
-              placeholder="password"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
+              mt={-3}
+              required
             />
+
             <Button onClick={signIn}>
               {currentUser ? "Log Out" : "Sign In"}
             </Button>
-            <Button onClick={signInWithGoogle}>Sign In With Google</Button>
+            <Button colorScheme="blue" onClick={signInWithGoogle}>
+              Sign In With Google
+            </Button>
             <Text fontSize="xs" color="gray.400">
               <NavLink to="/signup">Need an account? Sign Up!</NavLink>
             </Text>
