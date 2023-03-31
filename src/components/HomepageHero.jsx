@@ -82,7 +82,7 @@ const HomepageHero = () => {
               mt={-3}
               required
             />
-            <label>Password</label>
+            <label mt={5}>Password</label>
             <Input
               type="password"
               onChange={(e) => setPassword(e.target.value)}
