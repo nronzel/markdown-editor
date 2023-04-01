@@ -24,12 +24,16 @@ const HomepageHero = () => {
       </Flex>
       <Flex direction="column" gap={5} alignItems="center">
         <VStack w="100%" gap={5}>
-          <Button size="lg" w="150px">
-            <NavLink to="/signin">Log In</NavLink>
-          </Button>
-          <Button size="lg" variant="outline" w="150px" colorScheme="teal">
-            <NavLink to="/signup">Sign Up</NavLink>
-          </Button>
+          <NavLink to="/signin">
+            <Button size="lg" w="150px">
+              Log In
+            </Button>
+          </NavLink>
+          <NavLink to="/signup">
+            <Button size="lg" variant="outline" w="150px" colorScheme="teal">
+              Sign Up
+            </Button>
+          </NavLink>
         </VStack>
       </Flex>
     </Flex>
