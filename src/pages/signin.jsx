@@ -8,7 +8,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { auth, googleProvider } from "../config/firebase";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -67,7 +67,9 @@ const Signin = () => {
         />
 
         <Button onClick={login}>Sign In</Button>
-        <Button colorScheme="blue">Sign In With Google</Button>
+        <Button onClick={signInWithGoogle} colorScheme="blue">
+          Sign In With Google
+        </Button>
         <Text fontSize="xs" color="gray.400">
           <NavLink to="/signup">Need an account? Sign Up!</NavLink>
         </Text>
