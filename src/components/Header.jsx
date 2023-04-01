@@ -5,7 +5,7 @@ import {
   Heading,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
