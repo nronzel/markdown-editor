@@ -82,7 +82,7 @@ const Signup = () => {
             required={true}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <Button mt={5} onClick={createAccount}>Sign Up</Button>
+          <Button h="50px" mt={5} onClick={createAccount}>Sign Up</Button>
       </Flex>
     </Flex>
   );
