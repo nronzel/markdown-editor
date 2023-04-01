@@ -1,59 +1,36 @@
 import {
   Button,
-  Divider,
   Flex,
-  Input,
   Text,
+  VStack,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
-// import { auth, googleProvider } from "../config/firebase";
-// import {
-//   signInWithEmailAndPassword,
-//  signInWithPopup,
-//  signOut,
-//} from "firebase/auth";
-// import { AuthContext } from "../config/AuthProvider";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const HomepageHero = () => {
-  //const signInWithGoogle = async () => {
-  //  try {
-  //kh    await signInWithPopup(auth, googleProvider);
-  //  } catch (err) {
-  //    alert(err.message);
-  //ih   }
-  // };
-
-  // const logOut = async () => {
-  // try {
-  //   await signOut(auth);
-  //   alert("Logged Out Successfully");
-  //   navigate("/");
-  // } catch (err) {
-  //  alert(err.message);
-  // }
-  //};
-
   return (
     <Flex
-      justifyContent="center"
+      justifyContent="space-evenly"
+      alignItems="center"
       gap={7}
       h="450px"
       borderBottom="1px solid"
       borderColor={useColorModeValue("gray.300", "gray.600")}
+      wrap="wrap"
     >
-      <Flex alignItems="center">
+      <Flex alignItems="center" justifyContent="center" h="100%">
         <Text>Edit and save Markdown files right in your browser!</Text>
       </Flex>
-      <Divider orientation="vertical" />
-      <Flex direction="column" gap={5}>
-        <Button>
-          <NavLink to="/signin">Log In</NavLink>
-        </Button>
-        <Button>
-          <NavLink to="/signup">Sign Up</NavLink>
-        </Button>
+      <Flex direction="column" gap={5} alignItems="center">
+        <VStack w="100%" gap={5}>
+          <Button size="lg" w="150px">
+            <NavLink to="/signin">Log In</NavLink>
+          </Button>
+          <Button size="lg" variant="outline" w="150px" colorScheme="teal">
+            <NavLink to="/signup">Sign Up</NavLink>
+          </Button>
+        </VStack>
       </Flex>
     </Flex>
   );
