@@ -1,16 +1,22 @@
-import { Button, Flex, HStack, Heading, useColorModeValue } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  HStack,
+  Heading,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import React, { useContext } from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../config/AuthProvider";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAuthValue } from "../config/AuthProvider";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser } = useAuthValue();
 
   const logOut = async () => {
     try {
@@ -37,8 +43,8 @@ const Header = () => {
         <HStack>
           <ThemeSwitcher />
           {currentUser ? (
-            <Button size="sm" onClick={logOut}>
-              <FontAwesomeIcon icon={faArrowRightFromBracket} size="lg" />
+            <Button onClick={logOut}>
+              <FontAwesomeIcon icon={faArrowRightFromBracket} />
             </Button>
           ) : (
             ""
