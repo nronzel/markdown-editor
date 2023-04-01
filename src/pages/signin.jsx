@@ -6,6 +6,7 @@ import { useAuthValue } from "../config/AuthProvider";
 import {
   sendEmailVerification,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../config/firebase";
 
@@ -16,22 +17,28 @@ const Signin = () => {
   const { setTimeActive } = useAuthValue();
   const navigate = useNavigate();
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        if (!auth.currentUser.emailVerified) {
-          sendEmailVerification(auth.currentUser)
-            .then(() => {
-              setTimeActive(true);
-              navigate("/verify-email");
-            })
-            .catch((err) => alert(err.message));
-        } else {
-          navigate("/editor");
-        }
-      })
-      .catch((err) => setError(err.message));
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      if (!auth.currentUser.emailVerified) {
+        await sendEmailVerification(auth.currentUser);
+        setTimeActive(true);
+        navigate("/verify-email");
+      } else {
+        navigate("/editor");
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
