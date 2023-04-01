@@ -2,10 +2,9 @@ import {
   Box,
   Button,
   Flex,
-  FormControl,
   FormLabel,
+  Heading,
   Input,
-  Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Header from "../components/Header";
@@ -58,39 +57,34 @@ const Signup = () => {
   };
 
   return (
-    <>
+    <Flex direction="column" alignItems="center">
       <Header />
-      <Flex direction="column" alignItems="center" mt={10}>
-        <Flex direction="column" gap={5}>
-          <FormControl>
-            <Text textAlign="center">Sign Up</Text>
-            {error && <Box className="auth_error">{error}</Box>}
-            <FormLabel>Email</FormLabel>
-            <Input
-              mt={-3}
-              type="email"
-              required={true}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <FormLabel>Password</FormLabel>
-            <Input
-              mt={-3}
-              type="password"
-              required={true}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <FormLabel>Confirm Password</FormLabel>
-            <Input
-              mt={-3}
-              type="password"
-              required={true}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <Button onClick={createAccount}>Sign Up</Button>
-          </FormControl>
-        </Flex>
+      <Flex direction="column" mt={10}>
+          <Heading textAlign="center" mb={4} >Sign Up</Heading>
+          {error && <Box className="auth_error">{error}</Box>}
+          <FormLabel>Email</FormLabel>
+          <Input
+            type="email"
+            required={true}
+            onChange={(e) => setEmail(e.target.value)}
+            mb={5}
+          />
+          <FormLabel>Password</FormLabel>
+          <Input
+            type="password"
+            required={true}
+            onChange={(e) => setPassword(e.target.value)}
+            mb={3}
+          />
+          <FormLabel>Confirm Password</FormLabel>
+          <Input
+            type="password"
+            required={true}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <Button mt={5} onClick={createAccount}>Sign Up</Button>
       </Flex>
-    </>
+    </Flex>
   );
 };
 
