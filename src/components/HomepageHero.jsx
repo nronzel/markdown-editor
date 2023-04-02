@@ -4,6 +4,7 @@ import {
   Text,
   VStack,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -13,13 +14,25 @@ import { useNavigate } from "react-router-dom";
 
 const HomepageHero = () => {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const anonSignIn = async () => {
     try {
       await signInAnonymously(auth);
+      toast({
+        title: "Anonymous Login Successful",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       navigate("/editor");
     } catch (err) {
-      alert(err.message);
+      toast({
+        title: `Error - ${err.message}`,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
