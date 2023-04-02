@@ -1,4 +1,5 @@
 import {
+  Text,
   Box,
   Button,
   Flex,
@@ -14,7 +15,7 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 import { auth } from "../config/firebase";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthValue } from "../config/AuthProvider";
 
 const Signup = () => {
@@ -102,6 +103,9 @@ const Signup = () => {
         <Button h="50px" mt={5} onClick={createAccount}>
           Sign Up
         </Button>
+        <Text fontSize="xs" mt={2} color="gray.400">
+          <NavLink to="/signin">Already have an account? Sign In!</NavLink>
+        </Text>
       </Flex>
     </Flex>
   );
