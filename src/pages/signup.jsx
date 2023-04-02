@@ -43,7 +43,6 @@ const Signup = () => {
     setError("");
     if (validatePassword()) {
       try {
-        // create new user w/ email and pw
         await createUserWithEmailAndPassword(auth, email, password);
         toast({
           title: "Account Created - Please Verify Your Email",
@@ -76,6 +75,11 @@ const Signup = () => {
             className="auth_error"
             border="1px solid"
             borderColor="red.500"
+            p={2}
+            mb={4}
+            rounded="lg"
+            bgColor="red.100"
+            color="red.500"
           >
             {error}
           </Box>
@@ -86,6 +90,7 @@ const Signup = () => {
           required={true}
           onChange={(e) => setEmail(e.target.value)}
           mb={3}
+          placeholder="example@example.com"
         />
         <FormLabel>Password</FormLabel>
         <Input
@@ -100,7 +105,18 @@ const Signup = () => {
           required={true}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <Button h="50px" mt={5} onClick={createAccount}>
+        <Button
+          h="50px"
+          mt={5}
+          onClick={createAccount}
+          bgGradient="linear(to-r, teal.500, purple.500)"
+          _hover={{
+            bgGradient: "linear(to-r, purple.400, teal.400)",
+          }}
+          _active={{
+            bgGradient: "linear(to-r, teal.600, purple.600)",
+          }}
+        >
           Sign Up
         </Button>
         <Text fontSize="xs" mt={2} color="gray.400">
