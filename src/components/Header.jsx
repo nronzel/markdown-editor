@@ -7,6 +7,7 @@ import {
   Tooltip,
   useColorModeValue,
   useToast,
+  Box,
 } from "@chakra-ui/react";
 import React from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher";
@@ -60,16 +61,18 @@ const Header = () => {
           ) : currentUser?.email ? (
             <Text>{currentUser.email}</Text>
           ) : null}
-          <ThemeSwitcher />
-          {currentUser ? (
-            <Tooltip label="logout">
-              <Button size="sm" onClick={logOut}>
-                <FontAwesomeIcon icon={faArrowRightFromBracket} />
-              </Button>
-            </Tooltip>
-          ) : (
-            ""
-          )}
+          <Flex gap={2}>
+            <ThemeSwitcher />
+            {currentUser ? (
+              <Tooltip label="logout" borderRadius={15}>
+                <Button size="sm" onClick={logOut}>
+                  <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                </Button>
+              </Tooltip>
+            ) : (
+              ""
+            )}
+          </Flex>
         </HStack>
       </Flex>
     </Flex>
