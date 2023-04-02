@@ -69,12 +69,12 @@ const HomepageHero = () => {
           Edit and Save Markdown Files Right in Your Browser!
         </Text>
         <Box
-          boxShadow="0 0 19px rgba(56,178,172,.4)"
+          boxShadow="0 0 25px rgba(56,178,172,.5)"
           borderRadius="xl"
           overflow="hidden"
           transition="all 0.3s ease"
           _hover={{
-            boxShadow: "0 0 25px rgba(56, 178, 172, .7)",
+            boxShadow: "0 0 35px rgba(56, 178, 172, .7)",
             transform: "scale(1.1)",
           }}
         >
