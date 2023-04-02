@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Heading, Flex, Input, Button, Text, Box, useToast } from "@chakra-ui/react";
+import {
+  Heading,
+  Flex,
+  Input,
+  Button,
+  Text,
+  Box,
+  useToast,
+} from "@chakra-ui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { useAuthValue } from "../config/AuthProvider";
@@ -90,11 +98,11 @@ const Signin = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button onClick={login}>Log In</Button>
-        <Button onClick={signInWithGoogle} colorScheme="blue">
+        <Button h="50px" onClick={login}>Log In</Button>
+        <Button h="50px" onClick={signInWithGoogle} colorScheme="blue">
           Sign In With Google
         </Button>
-        <Text fontSize="xs" color="gray.400">
+        <Text fontSize="xs" color="gray.400" mt={-3}>
           <NavLink to="/signup">Need an account? Sign Up!</NavLink>
         </Text>
       </Flex>
