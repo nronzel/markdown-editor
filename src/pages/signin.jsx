@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Input, Button, Text, Box } from "@chakra-ui/react";
+import { Flex, Input, Button, Text, Box, useToast } from "@chakra-ui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { useAuthValue } from "../config/AuthProvider";
@@ -16,6 +16,7 @@ const Signin = () => {
   const [error, setError] = useState("");
   const { setTimeActive } = useAuthValue();
   const navigate = useNavigate();
+  const toast = useToast();
 
   const login = async (e) => {
     e.preventDefault();
@@ -24,20 +25,43 @@ const Signin = () => {
       if (!auth.currentUser.emailVerified) {
         await sendEmailVerification(auth.currentUser);
         setTimeActive(true);
+        toast({
+          title: "Sign In Successful",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
         navigate("/verify-email");
       } else {
         navigate("/editor");
       }
     } catch (err) {
       setError(err.message);
+      toast({
+        title: `Error - ${error}`,
+        status: "error",
+        duraction: 3000,
+        isClosable: true,
+      });
     }
   };
 
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      toast({
+        title: "Sign In Successful",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     } catch (err) {
-      alert(err.message);
+      toast({
+        title: `Error - ${err.message}`,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
