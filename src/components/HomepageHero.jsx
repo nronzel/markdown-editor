@@ -6,17 +6,15 @@ import {
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
 import { auth } from "../config/firebase";
 import { signInAnonymously } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useMotionValue, useTransform, motion } from "framer-motion";
 import LoginSection from "./LoginSection";
 
 const HomepageHero = () => {
   const navigate = useNavigate();
   const toast = useToast();
-  const [isHovered, setIsHovered] = useState(false);
 
   const anonSignIn = async () => {
     try {
@@ -81,39 +79,15 @@ const HomepageHero = () => {
             fontWeight="bold"
             colorScheme="teal"
             onClick={anonSignIn}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            position="relative"
-            overflow="hidden"
             _hover={{
-              boxShadow: "0 0 25px rgba(56, 178, 172, .7) translateZ(0)",
+              boxShadow: "0 0 25px rgba(56, 178, 172, .7)",
             }}
           >
-            <motion.div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                borderRadius: "xl",
-                border: `2px solid ${useColorModeValue(
-                  "purple.500",
-                  "purple.200"
-                )}`,
-                rotateZ: useTransform(
-                  useMotionValue(0),
-                  [0, 1],
-                  ["0deg", "360deg"]
-                ),
-              }}
-              animate={{ rotateZ: isHovered ? 1 : 0 }}
-            />
             Try it!
           </Button>
         </Box>
       </Flex>
-     <LoginSection />
+      <LoginSection />
     </Flex>
   );
 };
