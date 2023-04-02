@@ -1,4 +1,12 @@
-import { Box, Button, Flex, FormLabel, Heading, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  FormLabel,
+  Heading,
+  Input,
+  useToast,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import {
@@ -16,6 +24,7 @@ const Signup = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { setTimeActive } = useAuthValue();
+  const toast = useToast();
 
   const validatePassword = () => {
     let isValid = true;
@@ -35,6 +44,12 @@ const Signup = () => {
       try {
         // create new user w/ email and pw
         await createUserWithEmailAndPassword(auth, email, password);
+        toast({
+          title: "Account Created - Please Verify Your Email",
+          status: "warning",
+          duration: 5000,
+          isClosable: true,
+        });
         await sendEmailVerification(auth.currentUser);
         setTimeActive(true);
         navigate("/verify-email");
@@ -55,7 +70,12 @@ const Signup = () => {
           Sign Up
         </Heading>
         {error && (
-          <Box textAlign="center" className="auth_error">
+          <Box
+            textAlign="center"
+            className="auth_error"
+            border="1px solid"
+            borderColor="red.500"
+          >
             {error}
           </Box>
         )}
