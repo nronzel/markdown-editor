@@ -1,10 +1,11 @@
-import { Button, useColorMode } from "@chakra-ui/react";
+import { Button, useColorMode, Tooltip } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import React from "react";
 
 function ThemeSwitcher() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
+      <Tooltip label="theme">
     <Button
       aria-label="toggle theme"
       onClick={toggleColorMode}
@@ -17,6 +18,7 @@ function ThemeSwitcher() {
         <MoonIcon fontSize="lg" />
       )}
     </Button>
+      </Tooltip>
   );
 }
 
