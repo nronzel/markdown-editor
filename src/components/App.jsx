@@ -30,11 +30,7 @@ function App() {
             <Route
               path="/signup"
               element={
-                !currentUser?.emailVerified ? (
-                  <Signup />
-                ) : (
-                  <Navigate to="/editor" replace />
-                )
+                !currentUser ? <Signup /> : <Navigate to="/editor" replace />
               }
             />
             <Route
