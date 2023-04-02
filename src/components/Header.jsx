@@ -6,6 +6,7 @@ import {
   Heading,
   Tooltip,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import React from "react";
 import ThemeSwitcher from "../components/ThemeSwitcher";
@@ -19,14 +20,25 @@ import { useAuthValue } from "../config/AuthProvider";
 const Header = () => {
   const navigate = useNavigate();
   const { currentUser } = useAuthValue();
+  const toast = useToast();
 
   const logOut = async () => {
     try {
       await signOut(auth);
-      alert("Logged Out Sucecssfully");
+      toast({
+        title: "Logged Out Succesfully",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
       navigate("/");
     } catch (err) {
-      alert(err.message);
+      toast({
+        title: `Error - ${err.message}`,
+        status: "error",
+        duraction: "3000",
+        isClosable: true,
+      });
     }
   };
 
@@ -42,7 +54,7 @@ const Header = () => {
         <Heading>
           <NavLink to="/">Markdown Editor</NavLink>
         </Heading>
-        <HStack>
+        <HStack gap={5}>
           {currentUser?.isAnonymous ? (
             <Text>Anonymous</Text>
           ) : currentUser?.email ? (
