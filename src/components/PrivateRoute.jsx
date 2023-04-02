@@ -5,7 +5,7 @@ import { useAuthValue } from "../config/AuthProvider";
 const PrivateRoute = ({ children }) => {
   const { currentUser } = useAuthValue();
 
-  if (!currentUser?.emailVerified) {
+  if (!currentUser) {
     return <Navigate to="/signin" replace />;
   }
 
