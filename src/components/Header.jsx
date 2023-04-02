@@ -1,8 +1,10 @@
 import {
+  Text,
   Button,
   Flex,
   HStack,
   Heading,
+  Tooltip,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
@@ -41,11 +43,18 @@ const Header = () => {
           <NavLink to="/">Markdown Editor</NavLink>
         </Heading>
         <HStack>
+          {currentUser?.isAnonymous ? (
+            <Text>Anonymous</Text>
+          ) : currentUser?.email ? (
+            <Text>{currentUser.email}</Text>
+          ) : null}
           <ThemeSwitcher />
           {currentUser ? (
-            <Button onClick={logOut}>
-              <FontAwesomeIcon icon={faArrowRightFromBracket} />
-            </Button>
+            <Tooltip label="logout">
+              <Button size="sm" onClick={logOut}>
+                <FontAwesomeIcon icon={faArrowRightFromBracket} />
+              </Button>
+            </Tooltip>
           ) : (
             ""
           )}
