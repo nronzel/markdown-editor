@@ -28,21 +28,19 @@ const Signup = () => {
     return isValid;
   };
 
-  const createAccount = (e) => {
+  const createAccount = async (e) => {
     e.preventDefault();
     setError("");
     if (validatePassword()) {
-      // create new user w/ email and pw
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          sendEmailVerification(auth.currentUser)
-            .then(() => {
-              setTimeActive(true);
-              navigate("/verify-email");
-            })
-            .catch((err) => alert(err.message));
-        })
-        .catch((err) => setError(err.message));
+      try {
+        // create new user w/ email and pw
+        await createUserWithEmailAndPassword(auth, email, password);
+        await sendEmailVerification(auth.currentUser);
+        setTimeActive(true);
+        navigate("/verify-email");
+      } catch (err) {
+        setError(err.message);
+      }
     }
     setEmail("");
     setPassword("");
