@@ -53,22 +53,29 @@ const HomepageHero = () => {
         alignItems="center"
         justifyContent="center"
         h="100%"
-        gap={5}
+        gap={7}
       >
         <Text
           fontSize="3xl"
           fontWeight="bold"
           lineHeight="shorter"
           textAlign="center"
+          background="linear-gradient(to right, teal, magenta)"
+          backgroundClip="text"
+          color="transparent"
+          cursor="default"
+          userSelect="none"
         >
-          Edit and save Markdown files right in your browser!
+          Edit and Save Markdown Files Right in Your Browser!
         </Text>
         <Box
           boxShadow="0 0 19px rgba(56,178,172,.4)"
           borderRadius="xl"
           overflow="hidden"
+          transition="all 0.3s ease"
           _hover={{
             boxShadow: "0 0 25px rgba(56, 178, 172, .7)",
+            transform: "scale(1.1)",
           }}
         >
           <Button
