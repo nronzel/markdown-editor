@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   Text,
   useColorModeValue,
@@ -11,6 +10,7 @@ import { auth } from "../config/firebase";
 import { signInAnonymously } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import LoginSection from "./LoginSection";
+import AnimatedButton from "./AnimatedButton";
 
 const HomepageHero = () => {
   const navigate = useNavigate();
@@ -78,20 +78,7 @@ const HomepageHero = () => {
             transform: "scale(1.1)",
           }}
         >
-          <Button
-            size="lg"
-            py={5}
-            px={10}
-            fontSize="xl"
-            fontWeight="bold"
-            colorScheme="teal"
-            onClick={anonSignIn}
-            _hover={{
-              boxShadow: "0 0 25px rgba(56, 178, 172, .7)",
-            }}
-          >
-            Try it!
-          </Button>
+          <AnimatedButton anonSignIn={anonSignIn} />
         </Box>
       </Flex>
       <LoginSection />
