@@ -5,7 +5,7 @@ import React from "react";
 function ThemeSwitcher() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-      <Tooltip label="theme">
+      <Tooltip label="theme" borderRadius={10}>
     <Button
       aria-label="toggle theme"
       onClick={toggleColorMode}
