@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Input, Button, Text, Box, useToast } from "@chakra-ui/react";
+import { Heading, Flex, Input, Button, Text, Box, useToast } from "@chakra-ui/react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { useAuthValue } from "../config/AuthProvider";
@@ -69,9 +69,9 @@ const Signin = () => {
     <Flex direction="column" alignItems="center">
       <Header />
       <Flex direction="column" gap={5}>
-        <Text mt={9} textAlign="center">
+        <Heading mt={9} textAlign="center">
           Sign In
-        </Text>
+        </Heading>
         {error && <Box className="auth_error">{error}</Box>}
         <label>Email</label>
         <Input
@@ -90,7 +90,7 @@ const Signin = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button onClick={login}>Sign In</Button>
+        <Button onClick={login}>Log In</Button>
         <Button onClick={signInWithGoogle} colorScheme="blue">
           Sign In With Google
         </Button>
