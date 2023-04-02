@@ -98,8 +98,10 @@ const Signin = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button h="50px" onClick={login}>Log In</Button>
-        <Button h="50px" onClick={signInWithGoogle} colorScheme="blue">
+        <Button colorScheme="teal" variant="outline" h="50px" onClick={login}>
+          Log In
+        </Button>
+        <Button mt={-3} h="50px" onClick={signInWithGoogle} colorScheme="blue">
           Sign In With Google
         </Button>
         <Text fontSize="xs" color="gray.400" mt={-3}>
