@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  FormLabel,
-  Heading,
-  Input,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, FormLabel, Heading, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import {
@@ -60,29 +53,37 @@ const Signup = () => {
     <Flex direction="column" alignItems="center">
       <Header />
       <Flex direction="column" mt={10}>
-          <Heading textAlign="center" mb={4} >Sign Up</Heading>
-          {error && <Box className="auth_error">{error}</Box>}
-          <FormLabel>Email</FormLabel>
-          <Input
-            type="email"
-            required={true}
-            onChange={(e) => setEmail(e.target.value)}
-            mb={5}
-          />
-          <FormLabel>Password</FormLabel>
-          <Input
-            type="password"
-            required={true}
-            onChange={(e) => setPassword(e.target.value)}
-            mb={3}
-          />
-          <FormLabel>Confirm Password</FormLabel>
-          <Input
-            type="password"
-            required={true}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <Button h="50px" mt={5} onClick={createAccount}>Sign Up</Button>
+        <Heading textAlign="center" mb={4}>
+          Sign Up
+        </Heading>
+        {error && (
+          <Box textAlign="center" className="auth_error">
+            {error}
+          </Box>
+        )}
+        <FormLabel>Email</FormLabel>
+        <Input
+          type="email"
+          required={true}
+          onChange={(e) => setEmail(e.target.value)}
+          mb={3}
+        />
+        <FormLabel>Password</FormLabel>
+        <Input
+          type="password"
+          required={true}
+          onChange={(e) => setPassword(e.target.value)}
+          mb={3}
+        />
+        <FormLabel>Confirm Password</FormLabel>
+        <Input
+          type="password"
+          required={true}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <Button h="50px" mt={5} onClick={createAccount}>
+          Sign Up
+        </Button>
       </Flex>
     </Flex>
   );
