@@ -7,6 +7,8 @@ import {
   Heading,
   Input,
   useToast,
+  VStack,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Header from "../components/Header";
@@ -14,7 +16,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { auth, googleProvider } from "../config/firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthValue } from "../config/AuthProvider";
 
@@ -36,6 +38,25 @@ const Signup = () => {
       }
     }
     return isValid;
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      toast({
+        title: "Sign In Successful",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+    } catch (err) {
+      toast({
+        title: `Error - ${err.message}`,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   const createAccount = async (e) => {
@@ -116,8 +137,12 @@ const Signup = () => {
           _active={{
             bgGradient: "linear(to-r, teal.600, purple.600)",
           }}
+          color="white"
         >
           Sign Up
+        </Button>
+        <Button mt={2} h="50px" onClick={signInWithGoogle} colorScheme="blue">
+          Sign In With Google
         </Button>
         <Text fontSize="xs" mt={2} color="gray.400">
           <NavLink to="/signin">Already have an account? Sign In!</NavLink>
