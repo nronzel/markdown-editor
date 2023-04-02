@@ -3,13 +3,14 @@ import { useAuthValue } from "../config/AuthProvider";
 import { auth } from "../config/firebase";
 import { sendEmailVerification } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text, useToast } from "@chakra-ui/react";
 
 const VerifyEmail = () => {
   const { currentUser } = useAuthValue();
-  const [time, setTime] = useState(60);
+  const [time, setTime] = useState(90);
   const { timeActive, setTimeActive } = useAuthValue();
   const navigate = useNavigate();
+  const toast = useToast();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,13 +20,28 @@ const VerifyEmail = () => {
           if (currentUser?.emailVerified) {
             clearInterval(interval);
             navigate("/editor");
+            toast({
+              title: "Email Successfully Verified",
+              status: "success",
+              duraction: 3000,
+              isClosable: true,
+            });
           }
         })
         .catch((err) => {
-          alert(err.message);
+          toast({
+            title: `Error - ${err.message}`,
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
         });
     }, 1000);
-  }, [navigate, currentUser]);
+
+      return () => {
+          clearInterval(interval);
+      };
+  }, [navigate, currentUser, toast]);
 
   useEffect(() => {
     let interval = null;
@@ -35,7 +51,7 @@ const VerifyEmail = () => {
       }, 1000);
     } else if (time === 0) {
       setTimeActive(false);
-      setTime(60);
+      setTime(90);
       clearInterval(interval);
     }
     return () => clearInterval(interval);
