@@ -1,7 +1,7 @@
-import { render, fireEvent, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
 import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import HomepageHero from "../src/components/HomepageHero";
 import { AuthProvider } from "../src/config/AuthProvider";
 
