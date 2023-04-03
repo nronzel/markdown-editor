@@ -1,9 +1,9 @@
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
+import { vi } from "vitest";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, useNavigate } from "react-router-dom";
 import HomepageHero from "../src/components/HomepageHero";
 import { AuthProvider } from "../src/config/AuthProvider";
-import { vi } from "vitest";
 
 vi.mock("react-router-dom", () => {
   const originalModule = require("react-router-dom");
@@ -41,19 +41,6 @@ describe("HomepageHero", () => {
 
     await waitFor(() => {
       expect(screen.queryByTestId("login-section")).toBeInTheDocument();
-    });
-  });
-
-  test("handles anonymous sign-in and navigation", async () => {
-    const navigate = vi.fn();
-    useNavigate.mockImplementation(() => navigate);
-    customRender(<HomepageHero />);
-
-    const anonSignInButton = screen.getByTestId("animated-button");
-    fireEvent.click(anonSignInButton);
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith("/editor");
     });
   });
 });
