@@ -1,4 +1,4 @@
-import { Box, Flex, Text, useColorModeValue, useToast } from "@chakra-ui/react";
+import { Flex, Text, useColorModeValue, useToast } from "@chakra-ui/react";
 import React from "react";
 import { auth } from "../config/firebase";
 import { signInAnonymously } from "firebase/auth";
