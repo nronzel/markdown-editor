@@ -43,4 +43,12 @@ describe("HomepageHero", () => {
       expect(screen.queryByTestId("login-section")).toBeInTheDocument();
     });
   });
+
+  test("matches the snapshot", async () => {
+    const { container } = customRender(<HomepageHero />);
+
+    await waitFor(() => {
+      expect(container).toMatchSnapshot();
+    });
+  });
 });
