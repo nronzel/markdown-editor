@@ -26,7 +26,7 @@ const Header = () => {
     try {
       await signOut(auth);
       toast({
-        title: "Logged Out Succesfully",
+        title: "Logged Out Successfully",
         status: "success",
         duration: 3000,
         isClosable: true,
