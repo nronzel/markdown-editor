@@ -1,6 +1,6 @@
 import {
   fireEvent,
-  render as rtlRender,
+  render,
   screen,
   waitFor,
 } from "@testing-library/react";
@@ -18,7 +18,7 @@ function customRender(ui, { currentUser, ...options }) {
     </AuthProvider>
   );
 
-  return rtlRender(ui, { wrapper: Wrapper, ...options });
+  return render(ui, { wrapper: Wrapper, ...options });
 }
 
 describe("Header", () => {
