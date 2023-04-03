@@ -1,9 +1,4 @@
-import {
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Header from "../src/components/Header";
 import { AuthProvider } from "../src/config/AuthProvider";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -65,6 +60,15 @@ describe("Header", () => {
       expect(
         screen.queryByText(/logged out successfully/i)
       ).toBeInTheDocument();
+    });
+  });
+
+  test("matches snapshot", async () => {
+    const currentUser = { isAnonymous: false, email: "test@example.com" };
+    const { container } = customRender(<Header />, { currentUser });
+
+    await waitFor(() => {
+      expect(container).toMatchSnapshot();
     });
   });
 });
