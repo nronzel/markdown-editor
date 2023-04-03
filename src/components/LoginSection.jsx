@@ -3,10 +3,16 @@ import { Flex, Text, Button, Box } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 const LoginSection = () => {
   return (
-    <Flex direction="column" gap={5} alignItems="center">
+    <Flex
+      direction="column"
+      gap={5}
+      alignItems="center"
+      data-testid="login-section"
+    >
       <Text fontSize="xl" fontWeight="bold">
         Sign In / Sign Up
       </Text>
@@ -42,6 +48,5 @@ const LoginSection = () => {
     </Flex>
   );
 };
-import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default LoginSection;

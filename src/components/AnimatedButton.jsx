@@ -57,6 +57,7 @@ const AnimatedButton = ({ anonSignIn }) => {
       }}
     >
       <Button
+        data-testid="animated-button"
         size="lg"
         py={5}
         px={10}
