@@ -7,14 +7,13 @@ import {
   Heading,
   Input,
   useToast,
-  VStack,
-  ButtonGroup,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
 import { NavLink, useNavigate } from "react-router-dom";
