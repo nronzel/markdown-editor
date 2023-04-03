@@ -119,3 +119,123 @@ exports[`HomepageHero > matches the snapshot 1`] = `
   />
 </div>
 `;
+
+exports[`HomepageHero > matches the snapshot 2`] = `
+<div>
+  <div
+    class="css-i3ugc7"
+  >
+    <div
+      class="css-vdyfd6"
+    >
+      <p
+        class="chakra-text css-dvpwj"
+      >
+        Edit and Save Markdown Files Right in Your Browser!
+      </p>
+      <div
+        class="css-tlk514"
+      >
+        <button
+          class="chakra-button css-72u9cm"
+          data-testid="animated-button"
+          type="button"
+        >
+          Try it!
+        </button>
+      </div>
+    </div>
+    <div
+      class="css-1piyg08"
+      data-testid="login-section"
+    >
+      <p
+        class="chakra-text css-157wn8n"
+      >
+        Sign In / Sign Up
+      </p>
+      <div
+        class="css-krshd1"
+      >
+        <div
+          class="css-0"
+        >
+          <a
+            class=""
+            href="/signin"
+          >
+            <button
+              class="chakra-button css-1ozty6z"
+              type="button"
+            >
+              <span
+                class="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-right-to-bracket "
+                  data-icon="right-to-bracket"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              Log In
+            </button>
+          </a>
+        </div>
+        <div
+          class="css-0"
+        >
+          <a
+            class=""
+            href="/signup"
+          >
+            <button
+              class="chakra-button css-1gkoaai"
+              type="button"
+            >
+              <span
+                class="chakra-button__icon css-1wh2kri"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-user-plus "
+                  data-icon="user-plus"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 640 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              Sign Up
+            </button>
+          </a>
+        </div>
+      </div>
+      <p
+        class="chakra-text css-qqfgvy"
+      >
+        Join now to access exclusive features!
+      </p>
+    </div>
+  </div>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
+</div>
+`;
