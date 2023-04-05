@@ -3,13 +3,13 @@ import { useAuthValue } from "../config/AuthProvider";
 import { auth } from "../config/firebase";
 import { sendEmailVerification } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 const VerifyEmail = () => {
   const { currentUser } = useAuthValue();
   const [time, setTime] = useState(90);
   const { timeActive, setTimeActive } = useAuthValue();
   const navigate = useNavigate();
-  const toast = useToast();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,28 +19,18 @@ const VerifyEmail = () => {
           if (currentUser?.emailVerified) {
             clearInterval(interval);
             navigate("/editor");
-            toast({
-              title: "Email Successfully Verified",
-              status: "success",
-              duraction: 3000,
-              isClosable: true,
-            });
+            alert("Email Successfully Verified");
           }
         })
         .catch((err) => {
-          toast({
-            title: `Error - ${err.message}`,
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-          });
+          alert(err.message);
         });
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [navigate, currentUser, toast]);
+  }, [navigate, currentUser]);
 
   useEffect(() => {
     let interval = null;
@@ -66,13 +56,31 @@ const VerifyEmail = () => {
       });
   };
 
+  const mainStyles = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+  };
+
+    const boxStyle = {
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        marginTop: "4rem",
+        alignItems: "center",
+    }
+
   return (
-    <div>
-      <h3>Verify Your Email Address</h3>
-      <p>A verification email has been sent to:{currentUser?.email}</p>
-      <button onClick={resendEmailVerification} disabled={timeActive}>
-        Resend Email {timeActive && time}
-      </button>
+    <div style={mainStyles}>
+      <Header />
+      <div style={boxStyle}>
+        <h3>Verify Your Email Address</h3>
+        <p>A verification email has been sent to:{currentUser?.email}</p>
+        <button onClick={resendEmailVerification} disabled={timeActive}>
+          Resend Email {timeActive && time}
+        </button>
+      </div>
     </div>
   );
 };
