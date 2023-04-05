@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm";
 import "../styles/editor.css";
 import Header from "./Header";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const MarkdownEditor = () => {
   const [markdown, setMarkdown] = useState("");
@@ -51,7 +51,8 @@ const MarkdownEditor = () => {
                 return !inline && match ? (
                   <SyntaxHighlighter
                     children={String(children).replace(/\n$/, "")}
-                    style={okaidia}
+                    style={coldarkDark}
+                    showLineNumbers="true"
                     language={match[1]}
                     PreTag="div"
                     {...props}
