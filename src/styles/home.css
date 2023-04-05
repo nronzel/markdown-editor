@@ -61,5 +61,5 @@
 .shine-effect:hover::before {
   opacity: 1;
   left: 100%;
-  transition: all 1s ease;
+  transition: all .5s ease;
 }
