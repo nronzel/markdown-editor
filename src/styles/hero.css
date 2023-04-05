@@ -1,0 +1,48 @@
+.hero-button-box {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-button {
+  background: linear-gradient(to right, teal, purple);
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s ease;
+  width: 130px;
+}
+
+.hero-button-outline {
+  font-size: 18px;
+  font-weight: bold;
+  background: transparent;
+  border: 1px solid purple;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  width: 130px;
+}
+
+.hero-button:hover,
+.hero-button-outline:hover {
+  animation: gradient 3s ease infinite;
+  border: 1px solid teal;
+  background-image: linear-gradient(270deg, teal, purple);
+  background-size: 200% 200%;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px teal, 0 0 15px teal, 0 0 20px teal, 0 0 25px purple,
+    0 0 15px purple, 0 0 20px purple, 0 0 30px purple;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

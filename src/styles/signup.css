@@ -1,0 +1,118 @@
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+  width: 300px;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.signup-heading {
+  margin-bottom: 4px;
+}
+
+.auth_error {
+  text-align: center;
+  border: 1px solid #f56565;
+  padding: 8px;
+  margin-top: 12px;
+  border-radius: 8px;
+  background-color: #fed7d7;
+  color: #f56565;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input {
+  display: block;
+  width: 100%;
+  height: 25px;
+  margin-bottom: 16px;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+button {
+  height: 50px;
+  width: 100%;
+  margin-top: 5px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signup-button {
+  background: linear-gradient(to right, teal, purple);
+  background-size: 150%;
+  border: none;
+  transition: background 0.3s ease;
+}
+.signup-button:hover {
+  background: linear-gradient(270deg, teal, purple);
+}
+
+.signup-button:focus,
+.signup-button:active {
+  background: linear-gradient(270deg, purple, teal);
+}
+
+.google-signin-button {
+  background-color: #4285f4;
+  color: #fff;
+}
+
+.google-signin-button:hover {
+  background-color: #2e69c9;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.signup-text {
+  font-size: 14px;
+  color: #718096;
+  margin-top: 10px;
+}
+
+.signup-text a {
+  color: #4a5568;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+.button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 7px;
+  width: 100%;
+}

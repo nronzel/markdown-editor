@@ -3,7 +3,6 @@ import { useAuthValue } from "../config/AuthProvider";
 import { auth } from "../config/firebase";
 import { sendEmailVerification } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Button, Flex, Text, useToast } from "@chakra-ui/react";
 
 const VerifyEmail = () => {
   const { currentUser } = useAuthValue();
@@ -38,9 +37,9 @@ const VerifyEmail = () => {
         });
     }, 1000);
 
-      return () => {
-          clearInterval(interval);
-      };
+    return () => {
+      clearInterval(interval);
+    };
   }, [navigate, currentUser, toast]);
 
   useEffect(() => {
@@ -68,13 +67,13 @@ const VerifyEmail = () => {
   };
 
   return (
-    <Flex direction="center">
-      <Text>Verify Your Email Address</Text>
-      <Text>A verification email has been sent to:{currentUser?.email}</Text>
-      <Button onClick={resendEmailVerification} disabled={timeActive}>
+    <div>
+      <h3>Verify Your Email Address</h3>
+      <p>A verification email has been sent to:{currentUser?.email}</p>
+      <button onClick={resendEmailVerification} disabled={timeActive}>
         Resend Email {timeActive && time}
-      </Button>
-    </Flex>
+      </button>
+    </div>
   );
 };
 

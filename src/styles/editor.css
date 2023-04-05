@@ -1,0 +1,62 @@
+.editor-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.main-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 90vw;
+    height: 80vh;
+}
+
+.container {
+    width: 100%;
+}
+
+.editor {
+  background-color: #212121;
+  outline: none;
+  border: none;
+  border: 1px solid #9c9c9c;
+  border-radius: 8px;
+  color: white;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  font-size: 15px;
+}
+
+.preview {
+  border: 1px solid #9c9c9c;
+  padding: 0px 7px;
+  border-radius: 8px;
+  overflow: scroll;
+  height: 100%;
+  text-align: left;
+}
+
+.titles {
+  text-align: center;
+}
+
+@media (max-width: 750px) {
+  .main-section {
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+    width: 90vw;
+  }
+
+  .editor {
+      height: 35vh;
+  }
+
+  .preview {
+      height: 35vh;
+  }
+}

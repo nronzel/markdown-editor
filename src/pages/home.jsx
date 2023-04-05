@@ -1,14 +1,22 @@
-import { Flex } from "@chakra-ui/react";
 import React from "react";
 import Header from "../components/Header";
-import HomepageHero from "../components/HomepageHero";
+import Hero from "../components/Hero";
+import "../styles/home.css";
 
 const Home = () => {
   return (
-    <Flex direction="column" w="100%" justifyContent="center">
+    <div className="flex-center">
       <Header />
-      <HomepageHero />
-    </Flex>
+      <div className="hero-container">
+        <p className="hero-text">
+          Edit and Save Markdown Documents Right in Your Browser!
+        </p>
+        <Hero />
+        <p className="supporting-text">
+          Join now to get access to exclusive features!
+        </p>
+      </div>
+    </div>
   );
 };
 

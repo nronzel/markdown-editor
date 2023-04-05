@@ -1,18 +1,9 @@
-import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
+import MarkdownEditor from "../components/MarkdownEditor";
 import Header from "../components/Header";
-import MdownPreview from "../components/MdownPreview";
 
 const Editor = () => {
-  return (
-    <Flex direction="column">
-      <Header />
-      <Text>Editor Page</Text>
-      <Flex>
-        <MdownPreview />
-      </Flex>
-    </Flex>
-  );
+  return <MarkdownEditor />;
 };
 
 export default Editor;

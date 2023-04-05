@@ -1,22 +1,14 @@
-import React, { useState } from "react";
-import {
-  Heading,
-  Flex,
-  Input,
-  Button,
-  Text,
-  Box,
-  useToast,
-} from "@chakra-ui/react";
-import { NavLink, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { useAuthValue } from "../config/AuthProvider";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
+import { useAuthValue } from "../config/AuthProvider";
+import SignInForm from "../components/SignInForm";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -24,7 +16,6 @@ const Signin = () => {
   const [error, setError] = useState("");
   const { setTimeActive } = useAuthValue();
   const navigate = useNavigate();
-  const toast = useToast();
 
   const login = async (e) => {
     e.preventDefault();
@@ -33,82 +24,36 @@ const Signin = () => {
       if (!auth.currentUser.emailVerified) {
         await sendEmailVerification(auth.currentUser);
         setTimeActive(true);
-        toast({
-          title: "Sign In Successful",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
         navigate("/verify-email");
       } else {
         navigate("/editor");
       }
     } catch (err) {
       setError(err.message);
-      toast({
-        title: `Error - ${error}`,
-        status: "error",
-        duraction: 3000,
-        isClosable: true,
-      });
     }
   };
 
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      toast({
-        title: "Sign In Successful",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
+      alert("Successfully Signed In With Google");
     } catch (err) {
-      toast({
-        title: `Error - ${err.message}`,
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
+      setError(err.message);
+      alert(err.message);
     }
   };
 
   return (
-    <Flex direction="column" alignItems="center">
+    <div>
       <Header />
-      <Flex direction="column" gap={5}>
-        <Heading mt={9} textAlign="center">
-          Sign In
-        </Heading>
-        {error && <Box className="auth_error">{error}</Box>}
-        <label>Email</label>
-        <Input
-          type="email"
-          errorBorderColor="red.300"
-          placeholder="example@example.com"
-          mt={-3}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <label mt={5}>Password</label>
-        <Input
-          type="password"
-          mt={-3}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <Button colorScheme="teal" variant="outline" h="50px" onClick={login}>
-          Log In
-        </Button>
-        <Button mt={-3} h="50px" onClick={signInWithGoogle} colorScheme="blue">
-          Sign In With Google
-        </Button>
-        <Text fontSize="xs" color="gray.400" mt={-3}>
-          <NavLink to="/signup">Need an account? Sign Up!</NavLink>
-        </Text>
-      </Flex>
-    </Flex>
+      <SignInForm
+        login={login}
+        signInWithGoogle={signInWithGoogle}
+        error={error}
+        setEmail={setEmail}
+        setPassword={setPassword}
+      />
+    </div>
   );
 };
 

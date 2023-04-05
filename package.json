@@ -11,22 +11,16 @@
     "test": "vitest -w --reporter verbose"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.17",
-    "@chakra-ui/react": "^2.5.4",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "firebase": "^9.18.0",
     "firebaseui": "^6.0.2",
-    "framer-motion": "^10.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.6",
     "react-router-dom": "^6.10.0",
-    "rehype-highlight": "^6.0.0",
+    "react-syntax-highlighter": "^15.5.0",
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {

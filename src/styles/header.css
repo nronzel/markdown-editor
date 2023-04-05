@@ -1,0 +1,46 @@
+.header-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: "70px";
+  width: 100vw;
+  border-bottom: 1px solid #9c9c9c;
+}
+
+.header-inner-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.logo-text {
+  color: white;
+  text-decoration: none;
+}
+
+.hstack {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  color: white;
+}
+
+.logout-btn {
+  padding: 10px 10px;
+  height: 40px;
+}
