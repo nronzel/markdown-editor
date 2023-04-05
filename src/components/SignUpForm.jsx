@@ -54,7 +54,7 @@ const SignUpForm = ({
           />
           <div className="button-box">
             <button className="signup-button" onClick={createAccount}>
-              Sign Up
+             <span className="button-text">Sign Up</span>
             </button>
             <button className="google-signin-button" onClick={handleGoogleSignIn}>
               Sign In With Google

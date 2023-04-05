@@ -66,13 +66,31 @@ button {
 }
 
 .signup-button {
-  background: linear-gradient(to right, teal, purple);
-  background-size: 150%;
+  background: linear-gradient(90deg, teal, purple);
   border: none;
-  transition: background 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
-.signup-button:hover {
-  background: linear-gradient(270deg, teal, purple);
+
+.signup-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(90deg, purple, teal);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+}
+
+.signup-button:hover::after {
+    opacity: 1;
 }
 
 .signup-button:focus,
