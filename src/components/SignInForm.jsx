@@ -31,7 +31,7 @@ const SignInForm = ({
         />
         <div className="button-box">
           <button className="signin-button" onClick={login}>
-            Log In
+           <span className="button-text">Log In</span>
           </button>
           <button className="google-signin-button" onClick={signInWithGoogle}>
             Sign In With Google
