@@ -12,7 +12,7 @@ const Home = () => {
           Edit and Save Markdown Documents Right in Your Browser!
         </p>
         <Hero />
-        <p className="supporting-text">
+        <p className="supporting-text shine-effect">
           Join now to get access to exclusive features!
         </p>
       </div>
