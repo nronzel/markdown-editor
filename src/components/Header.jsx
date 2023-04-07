@@ -3,7 +3,10 @@ import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuthValue } from "../config/AuthProvider";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faDownLong,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/header.css";
 
@@ -25,7 +28,10 @@ const Header = () => {
     <div className="header-main-container">
       <div className="header-inner-container">
         <h2 className="logo-text">
-          <NavLink to="/" className="logo-text">Markdown Editor</NavLink>
+          <NavLink to="/" className="logo-text">
+            Markd
+            <FontAwesomeIcon style={{paddingLeft: "5px"}} icon={faDownLong} />
+          </NavLink>
         </h2>
         <div className="hstack">
           {currentUser?.isAnonymous ? (
