@@ -1,0 +1,25 @@
+.main-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 35%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0px 10px 5px rgba(0, 0, 0, 0.4);
+}
+
+.drawer-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 1rem;
+}
+
+.close-btn {
+    font-size: 1rem;
+    cursor: pointer;
+}
