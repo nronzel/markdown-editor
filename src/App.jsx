@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase";
 import { Navigate } from "react-router-dom";
+import { EncryptionPasswordProvider } from "./config/EncryptionWrapper";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -26,36 +27,38 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <AuthProvider value={{ currentUser, timeActive, setTimeActive }}>
-          <Routes>
-            <Route exact path="/" index element={<Home />} />
-            <Route
-              path="/signup"
-              element={
-                !currentUser ? <Signup /> : <Navigate to="/editor" replace />
-              }
-            />
-            <Route
-              path="/signin"
-              element={
-                !currentUser?.emailVerified ? (
-                  <Signin />
-                ) : (
-                  <Navigate to="/editor" replace />
-                )
-              }
-            />
+          <EncryptionPasswordProvider>
+            <Routes>
+              <Route exact path="/" index element={<Home />} />
+              <Route
+                path="/signup"
+                element={
+                  !currentUser ? <Signup /> : <Navigate to="/editor" replace />
+                }
+              />
+              <Route
+                path="/signin"
+                element={
+                  !currentUser?.emailVerified ? (
+                    <Signin />
+                  ) : (
+                    <Navigate to="/editor" replace />
+                  )
+                }
+              />
 
-            <Route path="verify-email" element={<VerifyEmail />} />
+              <Route path="/verify-email" element={<VerifyEmail />} />
 
-            <Route
-              path="/editor"
-              element={
-                <PrivateRoute>
-                  <Editor />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
+              <Route
+                path="/editor"
+                element={
+                  <PrivateRoute>
+                    <Editor />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </EncryptionPasswordProvider>
         </AuthProvider>
       </BrowserRouter>
     </div>
