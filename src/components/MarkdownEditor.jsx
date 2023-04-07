@@ -1,16 +1,15 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import "../styles/editor.css";
 import Header from "./Header";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import CryptoJS from "crypto-js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import DocumentDrawer from "./DocumentDrawer";
+import Editor from "./Editor";
+import Preview from "./Preview";
+import SaveButton from "./SaveButton";
 
 const MarkdownEditor = ({ currentUser, encryptionPassword }) => {
   const [markdown, setMarkdown] = useState("");
@@ -90,50 +89,18 @@ const MarkdownEditor = ({ currentUser, encryptionPassword }) => {
           className="drawer-icon"
           onClick={toggleDrawer}
         />
-        <button className="save-btn" onClick={saveDocument}>
-        <FontAwesomeIcon icon={faFloppyDisk} />
-      </button>
+        <SaveButton saveDocument={saveDocument} />
       </div>
       {showDrawer && (
         <DocumentDrawer toggleDrawer={toggleDrawer} ref={drawerRef} />
       )}
       <div className="main-section">
-        <div className="container">
-          <h2 className="titles">Editor</h2>
-          <textarea
-            onKeyDown={handleTabKey}
-            className="editor"
-            value={markdown}
-            onChange={(e) => setMarkdown(e.target.value)}
-          />
-        </div>
-        <div className="container">
-          <h2 className="titles">Preview</h2>
-          <ReactMarkdown
-            children={markdown}
-            className="preview"
-            remarkPlugins={[remarkGfm]}
-            components={{
-              code({ node, inline, className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || "");
-                return !inline && match ? (
-                  <SyntaxHighlighter
-                    children={String(children).replace(/\n$/, "")}
-                    style={coldarkDark}
-                    showLineNumbers="true"
-                    language={match[1]}
-                    PreTag="div"
-                    {...props}
-                  />
-                ) : (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                );
-              },
-            }}
-          />
-        </div>
+        <Editor
+          markdown={markdown}
+          handleTabKey={handleTabKey}
+          setMarkdown={setMarkdown}
+        />
+        <Preview markdown={markdown} />
       </div>
     </div>
   );
