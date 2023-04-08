@@ -22,6 +22,12 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
     setUserDocuments([...userDocuments, newDocument]);
   };
 
+  const deleteUserDocument = (docId) => {
+    setUserDocuments((prevUserDocuments) =>
+      prevUserDocuments.filter((doc) => doc.id !== docId)
+    );
+  };
+
   const openDocument = (id, content, name) => {
     setOpenedDocumentId(id);
     setMarkdown(content);
@@ -92,10 +98,6 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
     const docRef = collection(db, "documents");
     const userQuery = query(docRef, where("uid", "==", currentUser.uid));
     const docsSnapshot = await getDocs(userQuery);
-    console.log(
-      "Raw fetched docs snapshot",
-      docsSnapshot.docs.map((doc) => doc.data())
-    );
 
     setUserDocuments(
       docsSnapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
@@ -133,6 +135,9 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
           encryptionKey={encryptionKey}
           updateUserDocuments={updateUserDocuments}
           openDocument={openDocument}
+          handleNewDocument={handleNewDocument}
+          openedDocumentId={openedDocumentId}
+          deleteUserDocument={deleteUserDocument}
         />
       )}
       <div className="main-section">
