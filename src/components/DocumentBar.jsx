@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SaveButton from "./SaveButton.jsx";
@@ -14,10 +14,17 @@ const DocumentBar = ({
   setDocumentName,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
+    const documentNameInput = useRef(null);
 
   const toggleEditMode = () => {
     setIsEditing((prevIsEditing) => !prevIsEditing);
   };
+
+ useEffect(() => {
+     if (documentNameInput.current) {
+         documentNameInput.current.value = documentName;
+     }
+ }, [documentName]);
 
   return (
     <div className="drawer-btn-container">
@@ -41,6 +48,7 @@ const DocumentBar = ({
         {isEditing ? (
           <input
             type="text"
+            ref={documentNameInput}
             value={documentName}
             onChange={(e) => setDocumentName(e.target.value)}
             onBlur={toggleEditMode}
