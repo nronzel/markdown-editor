@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import "../styles/editor.css";
 import Header from "./Header";
-import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import DocumentDrawer from "./DocumentDrawer";
 import Editor from "./Editor";
 import Preview from "./Preview";
 import DocumentBar from "./DocumentBar.jsx";
+import { saveDocument } from "../utils/documentActions";
 
 const MarkdownEditor = ({ currentUser, encryptionKey }) => {
   const [markdown, setMarkdown] = useState("");
@@ -14,13 +15,15 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
   const [statusMessage, setStatusMessage] = useState(null);
   const [documentName, setDocumentName] = useState("Untitled");
   const [userDocuments, setUserDocuments] = useState([]);
+  const [openedDocumentId, setOpenedDocumentId] = useState(null);
   const drawerRef = useRef(null);
 
   const updateUserDocuments = (newDocument) => {
     setUserDocuments([...userDocuments, newDocument]);
   };
 
-  const openDocument = (content, name) => {
+  const openDocument = (id, content, name) => {
+    setOpenedDocumentId(id);
     setMarkdown(content);
     setDocumentName(name);
   };
@@ -70,76 +73,22 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
     }
   };
 
-  const saveDocument = async () => {
-    if (!currentUser) {
-      alert("You must be signed in to save a document.");
-      return;
-    }
-
-    try {
-      const encoder = new TextEncoder();
-      const plaintext = encoder.encode(markdown);
-      const iv = crypto.getRandomValues(new Uint8Array(12));
-      const cipher = await window.crypto.subtle.encrypt(
-        {
-          name: "AES-GCM",
-          iv,
-        },
-        encryptionKey,
-        plaintext
-      );
-      const encryptedText = new Uint8Array(cipher);
-
-      const base64EncryptedText = arrayBufferToBase64(encryptedText);
-
-      const docRef = await addDoc(collection(db, "documents"), {
-        content: base64EncryptedText,
-        iv: Array.from(iv)
-          .map((b) => b.toString(16).padStart(2, "0"))
-          .join(""),
-        createdAt: new Date(),
-        uid: currentUser.uid,
-        name: documentName,
-      });
-
-      console.log("Document saved with ID: ", docRef.id);
-      setStatusMessage({
-        type: "success",
-        message: "Successfully saved document.",
-      });
-
-      setUserDocuments((prevDocuments) => [
-        ...prevDocuments,
-        {
-          id: docRef.id,
-          data: {
-            content: base64EncryptedText,
-            createdAt: new Date(),
-            uid: currentUser.uid,
-            name: documentName,
-          },
-        },
-      ]);
-    } catch (err) {
-      console.error("Error saving document: ", err);
-      setStatusMessage({
-        type: "error",
-        message: "Error: Failed to save document.",
-        code: err.code,
-      });
-    }
-    fetchUserDocuments();
+  const handleSaveDocument = async () => {
+    console.log("openedDocumentId:", openedDocumentId);
+    console.log("markdown:", markdown);
+    console.log("currentUser:", currentUser);
+    console.log("documentName:", documentName);
+    await saveDocument(
+      currentUser,
+      markdown,
+      openedDocumentId,
+      documentName,
+      setUserDocuments,
+      setStatusMessage,
+      fetchUserDocuments,
+      encryptionKey
+    );
   };
-
-  function arrayBufferToBase64(buffer) {
-    let binary = "";
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
-  }
 
   const fetchUserDocuments = async () => {
     if (!currentUser) return;
@@ -166,7 +115,7 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
       <Header />
       <DocumentBar
         toggleDrawer={toggleDrawer}
-        saveDocument={saveDocument}
+        saveDocument={handleSaveDocument}
         statusMessage={statusMessage}
         clearStatusMessage={clearStatusMessage}
         documentName={documentName}
