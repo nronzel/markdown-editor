@@ -13,7 +13,7 @@ const StatusMessage = ({ statusMessage, clearStatusMessage }) => {
     return () => clearTimeout(timer);
   }, [statusMessage, clearStatusMessage]);
 
-  return <div className={messageClass}>{message}</div>;
+  return <div className={`${messageClass} status-message`}>{message}</div>;
 };
 
 export default StatusMessage;
