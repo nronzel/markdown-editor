@@ -1,34 +1,81 @@
 .main-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100dvh;
-    width: 35%;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: #1c1c1c;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 4px 0px 10px 5px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 35%;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0px 10px 5px rgba(0, 0, 0, 0.4);
 }
 
 .drawer-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0px 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 1rem;
 }
 
 .close-btn {
-    font-size: 1rem;
-    cursor: pointer;
-    color: #333333;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333333;
 }
 
 .close-btn:hover {
-    color: #3d3d3d;
+  color: #3d3d3d;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
 }
 
 li {
-    cursor: pointer;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.doc-name {
+    width: 100%;
+}
+
+.del-btn {
+    color: red;
+    padding: 5px;
+    width: 3rem;
+}
+
+.spinner {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #fff;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  animation: spin 1s linear infinite;
+  color: white;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
