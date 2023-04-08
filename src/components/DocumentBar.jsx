@@ -70,9 +70,8 @@ const DocumentBar = ({
         )}
       </div>
       <div className="right-bar">
-        <button className="new-doc-btn">
+        <button onClick={handleNewDocument} className="new-doc-btn">
           <FontAwesomeIcon
-            onClick={handleNewDocument}
             className="new-doc"
             icon={faFileCirclePlus}
           />
