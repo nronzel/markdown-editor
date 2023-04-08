@@ -27,7 +27,7 @@ const DocumentDrawer = React.forwardRef(
     const deleteDocument = async (docId) => {
       setDeletingDocId(docId);
       if (docId === openedDocumentId) {
-        handleNewDocument();
+        await handleNewDocument();
       }
 
       const documentRef = docRef(db, "documents", docId);
