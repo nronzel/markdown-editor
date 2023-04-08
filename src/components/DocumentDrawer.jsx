@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../styles/documentdrawer.css";
-import { fromByteArray } from "base64-js";
 
 const DocumentDrawer = React.forwardRef(
   ({ toggleDrawer, userDocuments, encryptionKey, openDocument }, ref) => {
     const [decryptedDocuments, setDecryptedDocuments] = useState([]);
 
-    const handleDocumentClick = (content, name) => {
-      openDocument(content, name);
+    const handleDocumentClick = (content, name, id) => {
+      openDocument(content, name, id);
       toggleDrawer();
     };
 
@@ -67,7 +66,7 @@ const DocumentDrawer = React.forwardRef(
           {decryptedDocuments.map((doc) => (
             <li
               key={doc.id}
-              onClick={() => handleDocumentClick(doc.content, doc.name)}
+              onClick={() => handleDocumentClick(doc.id, doc.content, doc.name)}
             >
               {doc.name || "Untitled"}
             </li>
