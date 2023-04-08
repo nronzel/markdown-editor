@@ -1,26 +1,20 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import "../styles/editor.css";
 import Header from "./Header";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import DocumentDrawer from "./DocumentDrawer";
 import Editor from "./Editor";
 import Preview from "./Preview";
-import SaveButton from "./SaveButton";
-import StatusMessage from "./StatusMessage";
+import DocumentBar from "./DocumentBar.jsx";
 
 const MarkdownEditor = ({ currentUser, encryptionKey }) => {
   const [markdown, setMarkdown] = useState("");
   const [showDrawer, setShowDrawer] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
+  const [documentName, setDocumentName] = useState("Untitled");
   const drawerRef = useRef(null);
+
   const clearStatusMessage = () => {
     setStatusMessage(null);
   };
@@ -125,22 +119,15 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
   return (
     <div className="editor-container">
       <Header />
-      <div className="drawer-btn-container">
-        <FontAwesomeIcon
-          icon={faBars}
-          className="drawer-icon"
-          onClick={toggleDrawer}
-        />
-        <SaveButton saveDocument={saveDocument} />
-        <div>
-          {statusMessage && (
-            <StatusMessage
-              statusMessage={statusMessage}
-              clearStatusMessage={clearStatusMessage}
-            />
-          )}
-        </div>
-      </div>
+      <DocumentBar
+        toggleDrawer={toggleDrawer}
+        saveDocument={saveDocument}
+        statusMessage={statusMessage}
+        clearStatusMessage={clearStatusMessage}
+        documentName={documentName}
+        setDocumentName={setDocumentName}
+      />
+
       {showDrawer && (
         <DocumentDrawer toggleDrawer={toggleDrawer} ref={drawerRef} />
       )}
