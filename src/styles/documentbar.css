@@ -1,0 +1,52 @@
+.drawer-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    width: 100%;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    box-sizing: border-box;
+}
+
+.drawer-icon {
+    text-align: left;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.left-bar {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    flex: 1;
+}
+
+.middle-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    flex: 1;
+    gap: 10px;
+}
+
+.right-bar {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.save-btn {
+    width: 3rem;
+    padding: 0;
+}
+
+.edit-btn {
+    font-size: 1.2rem;
+    color: #666666;
+    cursor: pointer;
+}
