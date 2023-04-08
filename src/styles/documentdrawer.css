@@ -22,4 +22,9 @@
 .close-btn {
     font-size: 1rem;
     cursor: pointer;
+    color: #333333;
+}
+
+.close-btn:hover {
+    color: #3d3d3d;
 }
