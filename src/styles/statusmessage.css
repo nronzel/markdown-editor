@@ -3,6 +3,7 @@
     background-color: #C6F6D5;
     padding: 5px 7px;
     border-radius: 10px;
+    width: 100%;
 }
 
 .error-message {
@@ -10,4 +11,9 @@
     background-color: #FED7D7;
     padding: 5px 7px;
     border-radius: 10px;
+}
+
+.status-message {
+    width: 100%;
+    box-sizing: border-box;
 }

@@ -37,16 +37,18 @@
 .right-bar {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     flex: 1;
-}
-
-.save-btn {
-    width: 3rem;
-    padding: 0;
 }
 
 .edit-btn {
     font-size: 1.2rem;
     color: #666666;
+    cursor: pointer;
+}
+
+.new-doc-btn {
+    padding: 0;
+    width: 3rem;
     cursor: pointer;
 }
