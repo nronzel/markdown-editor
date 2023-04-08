@@ -88,7 +88,8 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
       setUserDocuments,
       setStatusMessage,
       fetchUserDocuments,
-      encryptionKey
+      encryptionKey,
+      setOpenedDocumentId
     );
   };
 
