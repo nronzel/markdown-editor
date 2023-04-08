@@ -6,14 +6,14 @@ import EncryptionModal from "../components/EncryptionModal.jsx";
 
 const Editor = () => {
   const { currentUser } = useContext(AuthContext);
-  const { encryptionPassword } = useEncryptionPasswordValue();
+  const { encryptionKey } = useEncryptionPasswordValue();
 
   return (
     <>
-      {!encryptionPassword && <EncryptionModal />}
+      {!encryptionKey && <EncryptionModal />}
       <MarkdownEditor
         currentUser={currentUser}
-        encryptionPassword={encryptionPassword}
+        encryptionKey={encryptionKey}
       />
     </>
   );
