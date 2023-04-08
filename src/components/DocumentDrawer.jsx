@@ -1,13 +1,44 @@
 import React, { useState, useEffect } from "react";
 import "../styles/documentdrawer.css";
+import { db } from "../config/firebase.js";
+import { doc as docRef, deleteDoc } from "firebase/firestore";
 
 const DocumentDrawer = React.forwardRef(
-  ({ toggleDrawer, userDocuments, encryptionKey, openDocument }, ref) => {
+  (
+    {
+      toggleDrawer,
+      userDocuments,
+      encryptionKey,
+      openDocument,
+      handleNewDocument,
+      openedDocumentId,
+      deleteUserDocument,
+    },
+    ref
+  ) => {
     const [decryptedDocuments, setDecryptedDocuments] = useState([]);
+    const [deletingDocId, setDeletingDocId] = useState(null);
 
     const handleDocumentClick = (content, name, id) => {
       openDocument(content, name, id);
       toggleDrawer();
+    };
+
+    const deleteDocument = async (docId) => {
+      setDeletingDocId(docId);
+      if (docId === openedDocumentId) {
+        handleNewDocument();
+      }
+
+      const documentRef = docRef(db, "documents", docId);
+      await deleteDoc(documentRef);
+
+      setDecryptedDocuments((prevDecryptedDocuments) =>
+        prevDecryptedDocuments.filter((d) => d.id !== docId)
+      );
+
+      setDeletingDocId(null);
+      deleteUserDocument(docId);
     };
 
     useEffect(() => {
@@ -62,17 +93,33 @@ const DocumentDrawer = React.forwardRef(
         <div className="drawer-header">
           <h3>Saved Documents</h3>
         </div>
-        <ul>
-          {decryptedDocuments.map((doc) => (
-            <li
-              key={doc.id}
-              onClick={() => handleDocumentClick(doc.id, doc.content, doc.name)}
-            >
-              {doc.name || "Untitled"}
-            </li>
-          ))}
-        </ul>
-        <button onClick={toggleDrawer}>Close</button>
+        <div className="doc-list">
+          <ul>
+            {decryptedDocuments.map((doc) => (
+              <li key={doc.id}>
+                <button
+                  className="del-btn"
+                  onClick={() => deleteDocument(doc.id)}
+                >
+                  {deletingDocId === doc.id ? (
+                    <span className="spinner"></span>
+                  ) : (
+                    "X"
+                  )}
+                </button>
+                <span
+                  className="doc-name"
+                  onClick={() =>
+                    handleDocumentClick(doc.id, doc.content, doc.name)
+                  }
+                >
+                  {doc.name || "Untitled"}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <button onClick={toggleDrawer}>Close</button>
+        </div>
       </div>
     );
   }
