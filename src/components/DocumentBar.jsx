@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faFileCirclePlus,
+  faPenToSquare,
+} from "@fortawesome/free-solid-svg-icons";
 import SaveButton from "./SaveButton.jsx";
 import StatusMessage from "./StatusMessage.jsx";
 import "../styles/documentbar.css";
@@ -12,19 +16,20 @@ const DocumentBar = ({
   clearStatusMessage,
   documentName,
   setDocumentName,
+  handleNewDocument,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
-    const documentNameInput = useRef(null);
+  const documentNameInput = useRef(null);
 
   const toggleEditMode = () => {
     setIsEditing((prevIsEditing) => !prevIsEditing);
   };
 
- useEffect(() => {
-     if (documentNameInput.current) {
-         documentNameInput.current.value = documentName;
-     }
- }, [documentName]);
+  useEffect(() => {
+    if (documentNameInput.current) {
+      documentNameInput.current.value = documentName;
+    }
+  }, [documentName]);
 
   return (
     <div className="drawer-btn-container">
@@ -64,7 +69,15 @@ const DocumentBar = ({
           </>
         )}
       </div>
-      <div className="right-bar"></div>
+      <div className="right-bar">
+        <button className="new-doc-btn">
+          <FontAwesomeIcon
+            onClick={handleNewDocument}
+            className="new-doc"
+            icon={faFileCirclePlus}
+          />
+        </button>
+      </div>
     </div>
   );
 };

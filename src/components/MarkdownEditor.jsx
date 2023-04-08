@@ -74,10 +74,6 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
   };
 
   const handleSaveDocument = async () => {
-    console.log("openedDocumentId:", openedDocumentId);
-    console.log("markdown:", markdown);
-    console.log("currentUser:", currentUser);
-    console.log("documentName:", documentName);
     await saveDocument(
       currentUser,
       markdown,
@@ -110,6 +106,12 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
     fetchUserDocuments();
   }, [currentUser]);
 
+  const handleNewDocument = () => {
+    setOpenedDocumentId(null);
+    setMarkdown("");
+    setDocumentName("Untitled");
+  };
+
   return (
     <div className="editor-container">
       <Header />
@@ -120,6 +122,7 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
         clearStatusMessage={clearStatusMessage}
         documentName={documentName}
         setDocumentName={setDocumentName}
+        handleNewDocument={handleNewDocument}
       />
 
       {showDrawer && (
