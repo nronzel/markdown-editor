@@ -8,7 +8,7 @@ const StatusMessage = ({ statusMessage, clearStatusMessage }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       clearStatusMessage();
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [statusMessage, clearStatusMessage]);
