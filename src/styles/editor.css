@@ -48,26 +48,6 @@
   text-align: center;
 }
 
-.drawer-icon {
-    text-align: left;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.drawer-btn-container {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    width: 100%;
-    padding-left: 2rem;
-    padding-top: 1rem;
-}
-
-.save-btn {
-    width: 3rem;
-    padding: 0;
-}
-
 @media (max-width: 750px) {
   .main-section {
     flex-direction: column;
