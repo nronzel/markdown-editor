@@ -3,16 +3,18 @@ import "../styles/documentdrawer.css";
 import { fromByteArray } from "base64-js";
 
 const DocumentDrawer = React.forwardRef(
-  ({ toggleDrawer, userDocuments, encryptionKey }, ref) => {
+  ({ toggleDrawer, userDocuments, encryptionKey, openDocument }, ref) => {
     const [decryptedDocuments, setDecryptedDocuments] = useState([]);
+
+    const handleDocumentClick = (content, name) => {
+      openDocument(content, name);
+      toggleDrawer();
+    };
 
     useEffect(() => {
       async function decryptDocuments() {
         const decryptedDocs = [];
-        console.log("Fetched Docs", userDocuments);
         for (const doc of userDocuments) {
-          console.log("Current Doc:", doc);
-          console.log("data object:", doc.data);
           try {
             const encryptedText = base64ToArrayBuffer(doc.data.content); // Change from doc.data.content
             const iv = new Uint8Array(
@@ -31,7 +33,7 @@ const DocumentDrawer = React.forwardRef(
               name: doc.data.name,
             });
           } catch (error) {
-            console.error("Error decrypting document with ID:", doc.id, error);
+            alert("Error decrypting document with ID:", doc.id, error);
           }
         }
         setDecryptedDocuments(decryptedDocs);
@@ -63,7 +65,12 @@ const DocumentDrawer = React.forwardRef(
         </div>
         <ul>
           {decryptedDocuments.map((doc) => (
-            <li key={doc.id}>{doc.name}</li>
+            <li
+              key={doc.id}
+              onClick={() => handleDocumentClick(doc.content, doc.name)}
+            >
+              {doc.name || "Untitled"}
+            </li>
           ))}
         </ul>
         <button onClick={toggleDrawer}>Close</button>

@@ -20,6 +20,11 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
     setUserDocuments([...userDocuments, newDocument]);
   };
 
+  const openDocument = (content, name) => {
+    setMarkdown(content);
+    setDocumentName(name);
+  };
+
   const clearStatusMessage = () => {
     setStatusMessage(null);
   };
@@ -175,6 +180,7 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
           userDocuments={userDocuments}
           encryptionKey={encryptionKey}
           updateUserDocuments={updateUserDocuments}
+          openDocument={openDocument}
         />
       )}
       <div className="main-section">
