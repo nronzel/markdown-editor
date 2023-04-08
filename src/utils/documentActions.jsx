@@ -14,7 +14,8 @@ export const saveDocument = async (
   setUserDocuments,
   setStatusMessage,
   fetchUserDocuments,
-  encryptionKey
+  encryptionKey,
+  setOpenedDocumentId
 ) => {
   if (!currentUser) {
     alert("You must be signed in to save a document.");
@@ -102,6 +103,7 @@ export const saveDocument = async (
           },
         },
       ]);
+      setOpenedDocumentId(docRef.id);
     }
   } catch (err) {
     console.error("Error saving document: ", err);
