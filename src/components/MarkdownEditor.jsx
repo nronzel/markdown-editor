@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import "../styles/editor.css";
 import Header from "./Header";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import DocumentDrawer from "./DocumentDrawer";
 import Editor from "./Editor";
@@ -13,7 +13,12 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
   const [documentName, setDocumentName] = useState("Untitled");
+  const [userDocuments, setUserDocuments] = useState([]);
   const drawerRef = useRef(null);
+
+  const updateUserDocuments = (newDocument) => {
+    setUserDocuments([...userDocuments, newDocument]);
+  };
 
   const clearStatusMessage = () => {
     setStatusMessage(null);
@@ -89,6 +94,7 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
           .join(""),
         createdAt: new Date(),
         uid: currentUser.uid,
+        name: documentName,
       });
 
       console.log("Document saved with ID: ", docRef.id);
@@ -96,6 +102,19 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
         type: "success",
         message: "Successfully saved document.",
       });
+
+      setUserDocuments((prevDocuments) => [
+        ...prevDocuments,
+        {
+          id: docRef.id,
+          data: {
+            content: base64EncryptedText,
+            createdAt: new Date(),
+            uid: currentUser.uid,
+            name: documentName,
+          },
+        },
+      ]);
     } catch (err) {
       console.error("Error saving document: ", err);
       setStatusMessage({
@@ -104,6 +123,7 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
         code: err.code,
       });
     }
+    fetchUserDocuments();
   };
 
   function arrayBufferToBase64(buffer) {
@@ -115,6 +135,26 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
     }
     return window.btoa(binary);
   }
+
+  const fetchUserDocuments = async () => {
+    if (!currentUser) return;
+
+    const docRef = collection(db, "documents");
+    const userQuery = query(docRef, where("uid", "==", currentUser.uid));
+    const docsSnapshot = await getDocs(userQuery);
+    console.log(
+      "Raw fetched docs snapshot",
+      docsSnapshot.docs.map((doc) => doc.data())
+    );
+
+    setUserDocuments(
+      docsSnapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+    );
+  };
+
+  useEffect(() => {
+    fetchUserDocuments();
+  }, [currentUser]);
 
   return (
     <div className="editor-container">
@@ -129,7 +169,13 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
       />
 
       {showDrawer && (
-        <DocumentDrawer toggleDrawer={toggleDrawer} ref={drawerRef} />
+        <DocumentDrawer
+          toggleDrawer={toggleDrawer}
+          ref={drawerRef}
+          userDocuments={userDocuments}
+          encryptionKey={encryptionKey}
+          updateUserDocuments={updateUserDocuments}
+        />
       )}
       <div className="main-section">
         <Editor
