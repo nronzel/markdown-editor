@@ -30,8 +30,9 @@
 }
 
 ul {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #313131;
 }
 
 li {
@@ -41,9 +42,17 @@ li {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 45px;
   padding: 0;
   padding-left: 10px;
   margin: 0;
+  background-color: #262626;
+  box-sizing: border-box;
+  border-bottom: 1px solid #313131;
+}
+
+li:hover {
+  background-color: #333333;
 }
 
 .doc-list {
@@ -51,16 +60,28 @@ li {
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  overflow: scroll;
 }
 
 .doc-name {
-    width: 100%;
+  width: 100%;
 }
 
 .del-btn {
-    color: red;
-    padding: 5px;
-    width: 3rem;
+  color: #e53e3e;
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.del-btn:hover {
+  border: 1px solid #c53030;
+  background-color: #fc8181;
+  color: #fed7d7;
 }
 
 .spinner {
@@ -72,6 +93,24 @@ li {
   animation: spin 1s linear infinite;
   color: white;
   display: inline-block;
+}
+
+.close-btn {
+  margin-top: 15px;
+  background-color: #202020;
+  color: #515151;
+  border-radius: 0px;
+  border: none;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.close-btn:hover {
+  color: #939393;
+  border: none;
+  border-top: 1px solid teal;
+  border-bottom: 1px solid teal;
+  outline: none;
 }
 
 @keyframes spin {
