@@ -1,4 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
+import { encryptMarkdown, base64ToArrayBuffer } from "../utils/documentActions";
+import { setDoc, getDoc, doc } from "firebase/firestore";
+import { db, auth } from "../config/firebase";
 
 export const EncryptionPasswordContext = createContext();
 
@@ -31,11 +34,94 @@ export const EncryptionPasswordProvider = ({ children }) => {
     return derivedKey;
   }
 
-  async function handleEncryptionKeyEntered(password, salt) {
+  const handleEncryptionKeyEntered = async (password, salt) => {
     const derivedKey = await deriveKey(password, salt);
     setEncryptionKey(derivedKey);
-    setIsCorrectPassword(true);
+
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      const isDecryptionSuccessful = await fetchTestDocument(
+        currentUser.uid,
+        derivedKey
+      );
+      setIsCorrectPassword(isDecryptionSuccessful);
+      return isDecryptionSuccessful;
+    }
+    return false;
+  };
+
+  const createTestDocument = async (uid, encryptionKey) => {
+    try {
+      const { base64EncryptedText, iv } = await encryptMarkdown(
+        "test-data",
+        encryptionKey
+      );
+      const testDocRef = doc(
+        db,
+        "users",
+        uid,
+        "testDocuments",
+        "test-document"
+      );
+      await setDoc(testDocRef, {
+        base64EncryptedText,
+        iv: Array.from(iv)
+          .map((b) => b.toString(16).padStart(2, "0"))
+          .join(""),
+        uid: uid,
+      });
+    } catch (error) {
+      console.error("Error creating test document:", error);
+    }
+  };
+
+  async function decryptTestDocument(docData, encryptionKey) {
+    try {
+      const encryptedText = base64ToArrayBuffer(docData.base64EncryptedText);
+      const iv = new Uint8Array(
+        docData.iv.match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
+      );
+      const decryptedContent = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv },
+        encryptionKey,
+        encryptedText
+      );
+      const decoder = new TextDecoder();
+      const plaintext = decoder.decode(decryptedContent);
+      return plaintext === "test-data";
+    } catch (error) {
+      console.error("Error decrypting test data:", error);
+      return false;
+    }
   }
+
+  const fetchTestDocument = async (uid, encryptionKey) => {
+    try {
+      const testDocRef = doc(
+        db,
+        "users",
+        uid,
+        "testDocuments",
+        "test-document"
+      );
+      const testDocSnap = await getDoc(testDocRef);
+      if (testDocSnap.exists()) {
+        const isDecryptionSuccessful = await decryptTestDocument(
+          testDocSnap.data(),
+          encryptionKey
+        );
+        setIsCorrectPassword(isDecryptionSuccessful);
+        return isDecryptionSuccessful;
+      } else {
+        await createTestDocument(uid, encryptionKey);
+        setIsCorrectPassword(true);
+        return true;
+      }
+    } catch (error) {
+      console.error("Error fetching/creating test document:", error);
+      return false;
+    }
+  };
 
   return (
     <EncryptionPasswordContext.Provider
