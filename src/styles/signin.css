@@ -9,13 +9,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
   border-radius: 0.5rem;
   width: 300px;
+  gap: 10px;
 }
 
 .signin-heading {
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
 }
 
 .auth_error {

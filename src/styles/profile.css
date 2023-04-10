@@ -1,0 +1,66 @@
+.field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 15px;
+}
+
+.profile-btn {
+  width: auto;
+  background-color: transparent;
+  padding: 0px 5px;
+  margin: 0;
+  border: none;
+  text-decoration-line: underline;
+  text-decoration-color: white;
+  text-underline-offset: 2px;
+  transition: all 0.3s ease;
+}
+
+.profile-btn:hover {
+  color: teal;
+  border: transparent;
+  text-decoration-color: white;
+  text-underline-offset: 5px;
+  transition: all 0.3s ease;
+  transition: text-underline-offset 0.3s ease, color 0.3s ease;
+}
+
+.regular-btn {
+  padding: 0;
+  width: auto;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.regular-btn:hover {
+  transform: scale(1.1);
+}
+
+label {
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  margin: 0;
+  padding: 20px 5px;
+}
+
+.delete-account-btn {
+    background-color: #FED7D7;
+    color: #9B2C2C;
+    border: none;
+    width: 175px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.delete-account-btn:hover {
+    background-color: #FEB2B2;
+}

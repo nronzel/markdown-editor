@@ -57,7 +57,7 @@ span {
   cursor: pointer;
 }
 
-a {
+.sign-up-link {
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-decoration-color: teal;
@@ -66,7 +66,7 @@ a {
   transition: all 0.3s ease;
 }
 
-a:hover {
+.sign-up-link:hover {
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(to right, teal 0%, magenta 100%);

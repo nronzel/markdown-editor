@@ -33,3 +33,7 @@
 .btn:hover {
     border-color: purple;
 }
+
+.small {
+    font-size: 12px;
+}
