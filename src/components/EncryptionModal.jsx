@@ -11,6 +11,7 @@ const EncryptionModal = () => {
   const [encryptionPassword, setEncryptionPassword] = useState("");
   const [numAttempts, setNumAttempts] = useState(0);
   const [userSalt, setUserSalt] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const { handleEncryptionKeyEntered, isCorrectPassword } = useContext(
     EncryptionPasswordContext
   );
@@ -52,23 +53,20 @@ const EncryptionModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let isPasswordCorrect = await handleEncryptionKeyEntered(
+    const isPasswordCorrect = await handleEncryptionKeyEntered(
       encryptionPassword,
       userSalt
     );
-    let attempts = numAttempts + 1;
-    while (!isPasswordCorrect && attempts < MAX_ATTEMPTS) {
-      setEncryptionPassword("");
-      isPasswordCorrect = await handleEncryptionKeyEntered(
-        encryptionPassword,
-        userSalt
-      );
-      attempts++;
-    }
-    if (isPasswordCorrect) {
-      setNumAttempts(0);
+
+    if (!isPasswordCorrect) {
+      setNumAttempts(numAttempts + 1);
+      setErrorMessage("Incorrect password. Please try again.");
     } else {
-      setNumAttempts(MAX_ATTEMPTS);
+      setNumAttempts(0);
+      setErrorMessage("");
+    }
+
+    if (numAttempts + 1 >= MAX_ATTEMPTS) {
       signOut(auth);
     }
   };
@@ -79,6 +77,7 @@ const EncryptionModal = () => {
         <div className="modal-container">
           <div className="modal">
             <p>Please enter your encryption password</p>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <input
               onChange={(e) => setEncryptionPassword(e.target.value)}
               value={encryptionPassword}
