@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 import { encryptMarkdown, base64ToArrayBuffer } from "../utils/documentActions";
 import { setDoc, getDoc, doc } from "firebase/firestore";
 import { db, auth } from "../config/firebase";
@@ -8,6 +8,16 @@ export const EncryptionPasswordContext = createContext();
 export const EncryptionPasswordProvider = ({ children }) => {
   const [encryptionKey, setEncryptionKey] = useState(null);
   const [isCorrectPassword, setIsCorrectPassword] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (!user) {
+        setEncryptionKey(null);
+        setIsCorrectPassword(false);
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   async function deriveKey(password, salt) {
     const encoder = new TextEncoder();
