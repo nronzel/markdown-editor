@@ -30,14 +30,16 @@ const Header = () => {
         <h2 className="logo-text">
           <NavLink to="/" className="logo-text">
             Markd
-            <FontAwesomeIcon style={{paddingLeft: "5px"}} icon={faDownLong} />
+            <FontAwesomeIcon style={{ paddingLeft: "5px" }} icon={faDownLong} />
           </NavLink>
         </h2>
         <div className="hstack">
           {currentUser?.isAnonymous ? (
             <p>Anonymous</p>
           ) : currentUser?.email ? (
-            <p>{currentUser.email}</p>
+            <NavLink to="/profile">
+              <p>{currentUser.email}</p>
+            </NavLink>
           ) : null}
           <div className="flex">
             {currentUser ? (
