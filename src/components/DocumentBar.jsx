@@ -8,6 +8,7 @@ import {
 import SaveButton from "./SaveButton.jsx";
 import StatusMessage from "./StatusMessage.jsx";
 import "../styles/documentbar.css";
+import { NavLink } from "react-router-dom";
 
 const DocumentBar = ({
   toggleDrawer,
@@ -17,6 +18,7 @@ const DocumentBar = ({
   documentName,
   setDocumentName,
   handleNewDocument,
+  currentUser,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const documentNameInput = useRef(null);
@@ -39,7 +41,13 @@ const DocumentBar = ({
           className="drawer-icon"
           onClick={toggleDrawer}
         />
-        <SaveButton saveDocument={saveDocument} />
+        {currentUser && currentUser.isAnonymous ? (
+          <NavLink to="/sign-up">
+            <span>Sign up to save</span>
+          </NavLink>
+        ) : (
+          <SaveButton saveDocument={saveDocument} />
+        )}
         <div>
           {statusMessage && (
             <StatusMessage
@@ -71,10 +79,7 @@ const DocumentBar = ({
       </div>
       <div className="right-bar">
         <button onClick={handleNewDocument} className="new-doc-btn">
-          <FontAwesomeIcon
-            className="new-doc"
-            icon={faFileCirclePlus}
-          />
+          <FontAwesomeIcon className="new-doc" icon={faFileCirclePlus} />
         </button>
       </div>
     </div>
