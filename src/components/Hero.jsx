@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signInAnonymously } from "firebase/auth";
 import { auth } from "../config/firebase";
-import "../styles/hero.css"
+import "../styles/hero.css";
+import { AuthContext } from "../config/AuthProvider";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { currentUser } = useContext(AuthContext);
 
   const anonSignIn = async () => {
     try {
@@ -18,10 +20,20 @@ const Hero = () => {
 
   return (
     <div className="hero-button-box">
-      <button className="hero-button" onClick={anonSignIn}>Try It!</button>
-      <NavLink to="/signup">
-      <button className="hero-button-outline">Sign Up</button>
-      </NavLink>
+      {!currentUser ? (
+        <>
+          <button className="hero-button" onClick={anonSignIn}>
+            Try It!
+          </button>
+          <NavLink to="/signup">
+            <button className="hero-button-outline">Sign Up</button>
+          </NavLink>
+        </>
+      ) : (
+        <NavLink to="/editor">
+          <button className="hero-button">Go to Editor</button>
+        </NavLink>
+      )}
     </div>
   );
 };
