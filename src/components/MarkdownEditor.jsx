@@ -126,6 +126,7 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
         documentName={documentName}
         setDocumentName={setDocumentName}
         handleNewDocument={handleNewDocument}
+        currentUser={currentUser}
       />
 
       {showDrawer && (
