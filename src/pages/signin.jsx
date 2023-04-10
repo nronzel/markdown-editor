@@ -26,6 +26,7 @@ const Signin = () => {
         setTimeActive(true);
         navigate("/verify-email");
       } else {
+        alert("Sign in successful.");
         navigate("/editor");
       }
     } catch (err) {
@@ -36,10 +37,10 @@ const Signin = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      alert("Successfully Signed In With Google");
+      alert("Google sign in successful.");
+      navigate("/editor");
     } catch (err) {
       setError(err.message);
-      alert(err.message);
     }
   };
 
