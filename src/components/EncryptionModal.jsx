@@ -50,13 +50,26 @@ const EncryptionModal = () => {
       .join("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (numAttempts >= MAX_ATTEMPTS) {
-      signOut(auth);
+    let isPasswordCorrect = await handleEncryptionKeyEntered(
+      encryptionPassword,
+      userSalt
+    );
+    let attempts = numAttempts + 1;
+    while (!isPasswordCorrect && attempts < MAX_ATTEMPTS) {
+      setEncryptionPassword("");
+      isPasswordCorrect = await handleEncryptionKeyEntered(
+        encryptionPassword,
+        userSalt
+      );
+      attempts++;
+    }
+    if (isPasswordCorrect) {
+      setNumAttempts(0);
     } else {
-      handleEncryptionKeyEntered(encryptionPassword, userSalt);
-      setNumAttempts(numAttempts + 1);
+      setNumAttempts(MAX_ATTEMPTS);
+      signOut(auth);
     }
   };
 
