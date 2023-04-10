@@ -87,6 +87,10 @@ const EncryptionModal = () => {
             <button className="btn" onClick={handleSubmit} disabled={!userSalt}>
               Submit
             </button>
+            <p className="small">
+              Do not forget your encryption password! There is no way to recover
+              it if it is forgotten!
+            </p>
           </div>
         </div>
       )}
