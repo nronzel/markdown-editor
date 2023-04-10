@@ -26,20 +26,26 @@ const DocumentDrawer = React.forwardRef(
     };
 
     const deleteDocument = async (docId) => {
-      setDeletingDocId(docId);
-      if (docId === openedDocumentId) {
-        await handleNewDocument();
-      }
-
-      const documentRef = docRef(db, "documents", docId);
-      await deleteDoc(documentRef);
-
-      setDecryptedDocuments((prevDecryptedDocuments) =>
-        prevDecryptedDocuments.filter((d) => d.id !== docId)
+      const confirmDelete = window.confirm(
+        "Are you sure you want to delete this document?"
       );
 
-      setDeletingDocId(null);
-      deleteUserDocument(docId);
+      if (confirmDelete) {
+        setDeletingDocId(docId);
+        if (docId === openedDocumentId) {
+          await handleNewDocument();
+        }
+
+        const documentRef = docRef(db, "documents", docId);
+        await deleteDoc(documentRef);
+
+        setDecryptedDocuments((prevDecryptedDocuments) =>
+          prevDecryptedDocuments.filter((d) => d.id !== docId)
+        );
+
+        setDeletingDocId(null);
+        deleteUserDocument(docId);
+      }
     };
 
     useEffect(() => {
