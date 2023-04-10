@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/editor.css"
 
 const Editor = ({ markdown, handleTabKey, setMarkdown }) => {
   return (
