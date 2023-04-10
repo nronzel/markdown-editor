@@ -11,7 +11,7 @@
   font-weight: bold;
   border: none;
   transition: all 0.3s ease;
-  width: 130px;
+  width: 150px;
 }
 
 .hero-button-outline {
@@ -21,7 +21,7 @@
   border: 1px solid purple;
   transition: all 0.3s ease;
   white-space: nowrap;
-  width: 130px;
+  width: 150px;
 }
 
 .hero-button:hover,
