@@ -10,7 +10,9 @@ const Editor = () => {
 
   return (
     <>
-      {!isCorrectPassword && <EncryptionModal />}
+      {!isCorrectPassword && currentUser && !currentUser.isAnonymous && (
+        <EncryptionModal />
+      )}
       <MarkdownEditor currentUser={currentUser} encryptionKey={encryptionKey} />
     </>
   );
