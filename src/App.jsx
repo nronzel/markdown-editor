@@ -12,6 +12,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/firebase";
 import { Navigate } from "react-router-dom";
 import { EncryptionPasswordProvider } from "./config/EncryptionWrapper";
+import Profile from "./pages/profile";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -48,6 +49,14 @@ function App() {
               />
 
               <Route path="/verify-email" element={<VerifyEmail />} />
+              <Route
+                path="/profile"
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
 
               <Route
                 path="/editor"
