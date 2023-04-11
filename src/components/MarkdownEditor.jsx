@@ -138,6 +138,7 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
           updateUserDocuments={updateUserDocuments}
           openDocument={openDocument}
           handleNewDocument={handleNewDocument}
+          setOpenedDocumentId={setOpenedDocumentId}
           openedDocumentId={openedDocumentId}
           deleteUserDocument={deleteUserDocument}
         />
