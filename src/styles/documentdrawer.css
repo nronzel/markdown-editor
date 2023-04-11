@@ -19,16 +19,6 @@
   padding: 0px 1rem;
 }
 
-.close-btn {
-  font-size: 1rem;
-  cursor: pointer;
-  color: #333333;
-}
-
-.close-btn:hover {
-  color: #3d3d3d;
-}
-
 ul {
   padding: 0;
   margin: 0;
@@ -87,7 +77,21 @@ li:hover {
   background-image: linear-gradient(
     to right,
     rgba(51, 51, 51, 0) 0%,
-    rgba(51, 51, 51, 1) 50%,
+    rgba(51, 51, 51, .7) 50%,
+    rgba(51, 51, 51, 0) 100%
+  );
+}
+
+li.active:before,
+li.active:after {
+  opacity: 1;
+}
+
+li.active {
+  background-image: linear-gradient(
+    to right,
+    rgba(51, 51, 51, 0) 0%,
+    rgba(51, 51, 51, .7) 50%,
     rgba(51, 51, 51, 0) 100%
   );
 }
@@ -119,8 +123,8 @@ li:hover {
 
 .del-btn:hover {
   border-color: #c53030;
-  background-color: #fc8181;
-  color: #fed7d7;
+  background-color: #FC8181;
+  color: #9B2C2C;
 }
 
 .spinner {
@@ -136,7 +140,7 @@ li:hover {
 .close-btn {
   margin-top: 15px;
   background-color: #202020;
-  color: #fed7d7;
+  color: #6b6b6b;
   border-radius: 0px;
   border: none;
   outline: none;
@@ -173,7 +177,7 @@ li:hover {
 
 .close-btn:hover {
   border: transparent;
-  color: #feb2b2;
+  color: #fff;
   background-image: linear-gradient(
     to right,
     rgba(51, 51, 51, 0) 0%,

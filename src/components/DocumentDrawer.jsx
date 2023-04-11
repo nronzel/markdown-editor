@@ -13,6 +13,7 @@ const DocumentDrawer = React.forwardRef(
       openDocument,
       handleNewDocument,
       openedDocumentId,
+      setOpenedDocumentId,
       deleteUserDocument,
     },
     ref
@@ -20,8 +21,9 @@ const DocumentDrawer = React.forwardRef(
     const [decryptedDocuments, setDecryptedDocuments] = useState([]);
     const [deletingDocId, setDeletingDocId] = useState(null);
 
-    const handleDocumentClick = (content, name, id) => {
-      openDocument(content, name, id);
+    const handleDocumentClick = (id, content, name) => {
+      openDocument(id, content, name);
+      setOpenedDocumentId(id);
       toggleDrawer();
     };
 
@@ -69,7 +71,10 @@ const DocumentDrawer = React.forwardRef(
         <div className="doc-list">
           <ul>
             {decryptedDocuments.map((doc) => (
-              <li key={doc.id}>
+              <li
+                key={doc.id}
+                className={doc.id === openedDocumentId ? "active" : ""}
+              >
                 <button
                   className="del-btn"
                   onClick={() => deleteDocument(doc.id)}
