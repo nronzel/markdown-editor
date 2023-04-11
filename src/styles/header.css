@@ -45,4 +45,14 @@ button {
   height: 40px;
 }
 
+.sign-in-text {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+    transition: all .3s ease;
+}
 
+.sign-in-text:hover {
+    text-underline-offset: 5px ;
+    text-decoration-thickness: 4px;
+}

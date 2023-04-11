@@ -48,7 +48,7 @@ const Header = () => {
               </button>
             ) : (
               <NavLink to="/signin">
-                <p>Sign In</p>
+                <p className="sign-in-text">Sign In</p>
               </NavLink>
             )}
           </div>
