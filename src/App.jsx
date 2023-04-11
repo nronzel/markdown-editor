@@ -34,7 +34,11 @@ function App() {
               <Route
                 path="/signup"
                 element={
-                  !currentUser ? <Signup /> : <Navigate to="/verify-email" replace />
+                  !currentUser ? (
+                    <Signup />
+                  ) : (
+                    <Navigate to="/verify-email" replace />
+                  )
                 }
               />
               <Route
