@@ -47,10 +47,6 @@
   cursor: pointer;
 }
 
-.accept-btn {
-    cursor: pointer;
-}
-
 .new-doc-btn {
   padding: 0;
   width: 3rem;
@@ -61,20 +57,17 @@ span {
   cursor: pointer;
 }
 
-.sign-up-link {
+.link {
   text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-decoration-color: teal;
+  text-decoration-color: white;
   text-underline-offset: 2px;
-  background-image: linear-gradient(transparent, transparent);
+  text-decoration-thickness: 2px;
   transition: all 0.3s ease;
 }
 
-.sign-up-link:hover {
-  color: transparent;
-  background-clip: text;
-  background-image: linear-gradient(to right, teal 0%, magenta 100%);
-  text-underline-offset: 6px;
-  text-decoration-color: magenta;
-  transition: all 0.3s ease;
+.link:hover {
+  text-decoration: underline;
+  text-decoration-color: white;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 3px;
 }
