@@ -43,8 +43,8 @@ const DocumentBar = ({
           onClick={toggleDrawer}
         />
         {currentUser && currentUser.isAnonymous ? (
-          <NavLink to="/sign-up">
-            <span>Sign up to save</span>
+          <NavLink to="/signup">
+            <span className="link">Sign up to save documents</span>
           </NavLink>
         ) : (
           <SaveButton saveDocument={saveDocument} />
