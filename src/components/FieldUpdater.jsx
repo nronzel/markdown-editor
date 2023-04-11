@@ -39,13 +39,13 @@ const FieldUpdater = ({
       </button>
     </form>
   ) : (
-      <div className="field-container">
-        <p>{label}:</p>
-        <p> {initialValue} </p>
-        <button className="profile-btn" onClick={() => setIsEditing(true)}>
-          Change
-        </button>
-      </div>
+    <div className="field-container">
+      <p>{label}:</p>
+      <p> {initialValue} </p>
+      <button className="profile-btn" onClick={() => setIsEditing(true)}>
+        Change
+      </button>
+    </div>
   );
 };
 

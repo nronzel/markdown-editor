@@ -8,14 +8,14 @@
 }
 
 .field-container {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    background-color: #212121;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 5px 10px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  background-color: #212121;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .profile-btn {
@@ -62,16 +62,16 @@ input {
 }
 
 .delete-account-btn {
-    background-color: #FED7D7;
-    color: #9B2C2C;
-    border: none;
-    width: 175px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  background-color: #fed7d7;
+  color: #9b2c2c;
+  border: none;
+  width: 175px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .delete-account-btn:hover {
-    background-color: #FEB2B2;
+  background-color: #feb2b2;
 }
