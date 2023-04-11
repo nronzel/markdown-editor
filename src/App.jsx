@@ -34,7 +34,7 @@ function App() {
               <Route
                 path="/signup"
                 element={
-                  !currentUser ? <Signup /> : <Navigate to="/editor" replace />
+                  !currentUser ? <Signup /> : <Navigate to="/verify-email" replace />
                 }
               />
               <Route
@@ -47,7 +47,6 @@ function App() {
                   )
                 }
               />
-
               <Route path="/verify-email" element={<VerifyEmail />} />
               <Route
                 path="/profile"
@@ -57,7 +56,6 @@ function App() {
                   </PrivateRoute>
                 }
               />
-
               <Route
                 path="/editor"
                 element={

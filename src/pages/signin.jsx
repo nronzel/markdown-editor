@@ -30,7 +30,7 @@ const Signin = () => {
         navigate("/editor");
       }
     } catch (err) {
-      setError(err.message);
+      setError(err.code);
     }
   };
 
