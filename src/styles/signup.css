@@ -68,7 +68,7 @@ button {
 }
 
 .signup-button {
-  background: linear-gradient(90deg, teal, purple);
+  background: linear-gradient(90deg, teal, magenta);
   border: none;
   overflow: hidden;
   position: relative;
@@ -81,7 +81,7 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(90deg, purple, teal);
+  background-image: linear-gradient(90deg, magenta, teal);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -97,7 +97,7 @@ button {
 
 .signup-button:focus,
 .signup-button:active {
-  background: linear-gradient(270deg, purple, teal);
+  background: linear-gradient(270deg, magenta, teal);
 }
 
 .google-signin-button {
