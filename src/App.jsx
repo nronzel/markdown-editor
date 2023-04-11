@@ -36,6 +36,8 @@ function App() {
                 element={
                   !currentUser ? (
                     <Signup />
+                  ) : currentUser.emailVerified ? (
+                    <Navigate to="/editor" replace />
                   ) : (
                     <Navigate to="/verify-email" replace />
                   )
