@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
+  faCheck,
   faFileCirclePlus,
   faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
@@ -59,13 +60,20 @@ const DocumentBar = ({
       </div>
       <div className="middle-bar">
         {isEditing ? (
-          <input
-            type="text"
-            ref={documentNameInput}
-            value={documentName}
-            onChange={(e) => setDocumentName(e.target.value)}
-            onBlur={toggleEditMode}
-          />
+          <>
+            <input
+              type="text"
+              ref={documentNameInput}
+              value={documentName}
+              onChange={(e) => setDocumentName(e.target.value)}
+              onBlur={toggleEditMode}
+            />
+            <FontAwesomeIcon
+              icon={faCheck}
+              onClick={toggleEditMode}
+              className="accept-btn"
+            />
+          </>
         ) : (
           <>
             {documentName}{" "}

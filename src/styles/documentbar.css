@@ -47,6 +47,10 @@
   cursor: pointer;
 }
 
+.accept-btn {
+    cursor: pointer;
+}
+
 .new-doc-btn {
   padding: 0;
   width: 3rem;
@@ -71,6 +75,6 @@ span {
   background-clip: text;
   background-image: linear-gradient(to right, teal 0%, magenta 100%);
   text-underline-offset: 6px;
-  text-decoration-color: purple;
+  text-decoration-color: magenta;
   transition: all 0.3s ease;
 }
