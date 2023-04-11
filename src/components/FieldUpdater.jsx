@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/profile.css"
+import "../styles/profile.css";
 
 const FieldUpdater = ({
   label,
@@ -39,14 +39,13 @@ const FieldUpdater = ({
       </button>
     </form>
   ) : (
-    <div className="field">
-      <p>
-        {label}: {initialValue}
-      </p>
-      <button className="profile-btn" onClick={() => setIsEditing(true)}>
-        Change
-      </button>
-    </div>
+      <div className="field-container">
+        <p>{label}:</p>
+        <p> {initialValue} </p>
+        <button className="profile-btn" onClick={() => setIsEditing(true)}>
+          Change
+        </button>
+      </div>
   );
 };
 
