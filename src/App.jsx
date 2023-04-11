@@ -34,7 +34,7 @@ function App() {
               <Route
                 path="/signup"
                 element={
-                  !currentUser ? (
+                  !currentUser || currentUser.isAnonymous ? (
                     <Signup />
                   ) : currentUser.emailVerified ? (
                     <Navigate to="/editor" replace />
