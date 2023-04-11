@@ -6,7 +6,7 @@
 }
 
 .hero-button {
-  background: linear-gradient(to right, teal, magenta);
+  background: linear-gradient(to right, turquoise, magenta);
   font-size: 18px;
   font-weight: bold;
   border: none;
@@ -27,11 +27,11 @@
 .hero-button:hover,
 .hero-button-outline:hover {
   animation: gradient 3s ease infinite;
-  border: 1px solid teal;
-  background-image: linear-gradient(270deg, teal, magenta);
+  border: 1px solid turquoise;
+  background-image: linear-gradient(270deg, turquoise, magenta);
   background-size: 200% 200%;
   transform: scale(1.1);
-  box-shadow: 0 0 10px teal, 0 0 15px teal, 0 0 20px teal, 0 0 25px magenta,
+  box-shadow: 0 0 10px turquoise, 0 0 15px turquoise, 0 0 20px turquoise, 0 0 25px magenta,
     0 0 15px magenta, 0 0 20px magenta, 0 0 30px magenta;
 }
 

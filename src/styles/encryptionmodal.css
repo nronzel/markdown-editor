@@ -27,16 +27,19 @@
 }
 
 .btn {
-   background-color: teal;
-   border: none;
-   margin-top: 10px;
+  background-color: turquoise;
+  color: black;
+  font-weight: bold;
+  border: none;
+  margin-top: 10px;
 }
 
 .btn:hover {
-    border: none;
-    background-color: #075c5e;
+  border: none;
+  color: white;
+  background-color: #075c5e;
 }
 
 .small {
-    font-size: 12px;
+  font-size: 12px;
 }

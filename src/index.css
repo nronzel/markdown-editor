@@ -17,13 +17,13 @@ body {
   margin: 0;
   display: flex;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100dvh;
   color: white;
   font-size: 16px;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.2rem;
   line-height: 1.1;
 }
 
@@ -40,7 +40,7 @@ button {
 }
 
 button:hover {
-  border-color: teal;
+  border-color: turquoise;
 }
 
 button:focus,

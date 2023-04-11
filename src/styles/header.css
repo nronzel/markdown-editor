@@ -57,5 +57,5 @@ button {
 .sign-in-text:focus {
   text-underline-offset: 5px;
   text-decoration-thickness: 4px;
-  text-decoration-color: teal;
+  text-decoration-color: turquoise;
 }
