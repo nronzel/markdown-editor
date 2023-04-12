@@ -76,3 +76,8 @@ span {
   text-underline-offset: 5px;
   text-decoration-thickness: 3px;
 }
+
+.accept-btn {
+    cursor: pointer;
+}
+

@@ -67,6 +67,7 @@ const DocumentBar = ({
               value={documentName}
               onChange={(e) => setDocumentName(e.target.value)}
               onBlur={toggleEditMode}
+              className="edit-name"
             />
             <FontAwesomeIcon
               icon={faCheck}
