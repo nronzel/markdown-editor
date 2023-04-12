@@ -32,6 +32,10 @@
   cursor: default;
 }
 
+.gif {
+    width: 80%;
+}
+
 .shine-effect {
   position: relative;
   display: inline-block;

@@ -6,6 +6,10 @@
   z-index: 2;
 }
 
+.encryption-input {
+    padding: 10px 20px;
+}
+
 .overlay {
   z-index: 1;
   width: 100%;

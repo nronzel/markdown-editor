@@ -19,13 +19,13 @@
   padding: 0px 1rem;
 }
 
-ul {
+.u-list {
   padding: 0;
   margin: 0;
   border-top: 1px solid #313131;
 }
 
-li {
+.list {
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -43,8 +43,8 @@ li {
   transition: background-image 0.3s ease;
 }
 
-li:before,
-li:after {
+.list:before,
+.list:after {
   content: "";
   position: absolute;
   left: 0;
@@ -60,38 +60,38 @@ li:after {
   );
 }
 
-li:before {
+.list:before {
   top: 0;
 }
 
-li:after {
+.list:after {
   bottom: 0;
 }
 
-li:hover:before,
-li:hover:after {
+.list:hover:before,
+.list:hover:after {
   opacity: 1;
 }
 
-li:hover {
+.list:hover {
   background-image: linear-gradient(
     to right,
     rgba(51, 51, 51, 0) 0%,
-    rgba(51, 51, 51, .7) 50%,
+    rgba(51, 51, 51, 0.7) 50%,
     rgba(51, 51, 51, 0) 100%
   );
 }
 
-li.active:before,
-li.active:after {
+.list.active:before,
+.list.active:after {
   opacity: 1;
 }
 
-li.active {
+.list.active {
   background-image: linear-gradient(
     to right,
     rgba(51, 51, 51, 0) 0%,
-    rgba(51, 51, 51, .7) 50%,
+    rgba(51, 51, 51, 0.7) 50%,
     rgba(51, 51, 51, 0) 100%
   );
 }
@@ -123,8 +123,8 @@ li.active {
 
 .del-btn:hover {
   border-color: #c53030;
-  background-color: #FC8181;
-  color: #9B2C2C;
+  background-color: #fc8181;
+  color: #9b2c2c;
 }
 
 .spinner {
