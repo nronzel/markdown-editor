@@ -62,10 +62,10 @@ button {
 
 .current-user {
   transition: all 0.3s ease;
+  color: white;
 }
 
 .current-user:hover,
-.current-user:focus,
-.current-user:active {
+.current-user:focus {
   color: turquoise;
 }
