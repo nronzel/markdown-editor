@@ -59,3 +59,13 @@ button {
   text-decoration-thickness: 4px;
   text-decoration-color: turquoise;
 }
+
+.current-user {
+  transition: all 0.3s ease;
+}
+
+.current-user:hover,
+.current-user:focus,
+.current-user:active {
+  color: turquoise;
+}

@@ -38,7 +38,7 @@ const Header = () => {
             <p>Anonymous</p>
           ) : currentUser?.email ? (
             <NavLink to="/profile">
-              <p>{currentUser.email}</p>
+              <p className="current-user">{currentUser.email}</p>
             </NavLink>
           ) : null}
           <div className="flex">
