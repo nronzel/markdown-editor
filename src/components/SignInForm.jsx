@@ -14,7 +14,7 @@ const SignInForm = ({
       <div className="signin-form">
         <h2 className="signin-heading">Sign In</h2>
         {error && <div className="auth_error">{error}</div>}
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email" className="form-label">Email</label>
         <input
           type="email"
           id="email"
@@ -23,7 +23,7 @@ const SignInForm = ({
           required
           className="signin-input"
         />
-        <label htmlFor="password">Password</label>
+        <label className="form-label" htmlFor="password">Password</label>
         <input
           type="password"
           id="password"

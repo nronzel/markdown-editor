@@ -14,21 +14,23 @@ const SignUpForm = ({
   signInWithGoogle,
   createAccount,
 }) => {
-
-    const handleGoogleSignIn = (e) => {
-        e.preventDefault()
-        signInWithGoogle()
-    }
+  const handleGoogleSignIn = (e) => {
+    e.preventDefault();
+    signInWithGoogle();
+  };
 
   return (
-    <div className="signup-form">
+    <>
       <Header />
-      <div className="signup-container">
-        <h2 className="signup-heading">Sign Up</h2>
-        {error && <div className="auth_error">{error}</div>}
-        <form>
-          <label htmlFor="email">Email</label>
+      <div className="signup-form">
+        <div className="signup-container">
+          <h2 className="signup-heading">Sign Up</h2>
+          {error && <div className="auth_error">{error}</div>}
+          <label className="field-label" htmlFor="email">
+            Email
+          </label>
           <input
+            className="signup-input"
             type="email"
             id="email"
             required
@@ -36,16 +38,22 @@ const SignUpForm = ({
             onChange={(e) => setEmail(e.target.value)}
             placeholder="example@example.com"
           />
-          <label htmlFor="password">Password</label>
+          <label className="field-label" htmlFor="password">
+            Password
+          </label>
           <input
+            className="signup-input"
             type="password"
             id="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <label htmlFor="confirm-password">Confirm Password</label>
+          <label className="field-label" htmlFor="confirm-password">
+            Confirm Password
+          </label>
           <input
+            className="signup-input"
             type="password"
             id="confirm-password"
             required
@@ -54,9 +62,12 @@ const SignUpForm = ({
           />
           <div className="button-box">
             <button className="signup-button" onClick={createAccount}>
-             <span className="button-text">Sign Up</span>
+              <span className="button-text">Sign Up</span>
             </button>
-            <button className="google-signin-button" onClick={handleGoogleSignIn}>
+            <button
+              className="google-signin-button"
+              onClick={handleGoogleSignIn}
+            >
               Sign In With Google
             </button>
           </div>
@@ -64,9 +75,9 @@ const SignUpForm = ({
             Already have an account?
             <NavLink to="/signin"> Sign In!</NavLink>
           </p>
-        </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

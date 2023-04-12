@@ -12,18 +12,7 @@
   text-align: center;
   justify-content: center;
   width: 300px;
-}
-
-form {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 1rem;
   gap: 10px;
-  width: 300px;
 }
 
 .signup-heading {
@@ -40,16 +29,16 @@ form {
   color: #f56565;
 }
 
-label {
+.field-label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
 }
 
-input {
+.signup-input {
   display: block;
   width: 100%;
-  height: 25px;
+  height: 40px;
   margin-bottom: 16px;
   padding: 8px;
   border: 1px solid #e2e8f0;

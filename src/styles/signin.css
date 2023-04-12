@@ -29,22 +29,22 @@
   color: #f56565;
 }
 
-label {
+.form-label {
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
-input {
+.signin-input {
   width: 100%;
   height: 2.5rem;
   margin-bottom: 1rem;
   padding: 0.5rem;
   border: 1px solid #cbd5e0;
-  border-radius: 0.25rem;
+  border-radius: 0.35rem;
   transition: border-color 0.2s;
 }
 
-input:focus {
+.signin-input:focus {
   outline: none;
   border-color: #4fd1c5;
 }
@@ -80,8 +80,8 @@ button {
 }
 
 .button-text {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .signin-button:hover::after {
