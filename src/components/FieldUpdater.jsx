@@ -22,7 +22,7 @@ const FieldUpdater = ({
   };
 
   return isEditing ? (
-    <form onSubmit={handleSubmit} className="field">
+    <div className="form-container">
       <div className="field">
         <label>{label}</label>
         <input
@@ -30,20 +30,20 @@ const FieldUpdater = ({
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <button className="profile-btn" type="submit">
+        <button className="profile-btn" type="button" onClick={handleSubmit}>
           Save
         </button>
+        <button className="regular-btn" onClick={() => setIsEditing(false)}>
+          Back
+        </button>
       </div>
-      <button className="regular-btn" onClick={() => setIsEditing(false)}>
-        Go Back
-      </button>
-    </form>
+    </div>
   ) : (
     <div className="field-container">
-      <p>{label}:</p>
+      <p className="field-name">{label}:</p>
       <p> {initialValue} </p>
       <button className="profile-btn" onClick={() => setIsEditing(true)}>
-        Change
+        Update
       </button>
     </div>
   );
