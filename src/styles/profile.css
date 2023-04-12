@@ -5,6 +5,8 @@
   padding: 0;
   margin: 0;
   gap: 15px;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .field-container {
@@ -16,6 +18,15 @@
   padding: 5px 10px;
   border-radius: 10px;
   margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
 }
 
 .profile-btn {
@@ -25,15 +36,17 @@
   margin: 0;
   border: none;
   text-decoration-line: underline;
-  text-decoration-color: white;
+  text-decoration-color: transparent;
   text-underline-offset: 2px;
   transition: all 0.3s ease;
+  font-weight: 300;
 }
 
 .profile-btn:hover {
-  color: teal;
+  color: turquoise;
   border: transparent;
   text-decoration-color: white;
+  text-decoration-thickness: 2px;
   text-underline-offset: 5px;
   transition: all 0.3s ease;
   transition: text-underline-offset 0.3s ease, color 0.3s ease;
@@ -45,10 +58,16 @@
   margin: 0;
   background-color: transparent;
   border: none;
+  transition: all 0.3s ease;
 }
 
 .regular-btn:hover {
   transform: scale(1.1);
+}
+
+.field-name {
+  font-weight: bold;
+  cursor: default;
 }
 
 label {
@@ -70,6 +89,7 @@ input {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  transition: all 0.3s ease;
 }
 
 .delete-account-btn:hover {
