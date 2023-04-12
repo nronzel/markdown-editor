@@ -80,10 +80,10 @@ const EncryptionModal = () => {
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <input
               onChange={(e) => setEncryptionPassword(e.target.value)}
+              className="encryption-input"
               value={encryptionPassword}
               type="password"
               required
-              className="encryption-input"
             />
             <button className="btn" onClick={handleSubmit} disabled={!userSalt}>
               Submit
