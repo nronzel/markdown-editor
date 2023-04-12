@@ -16,6 +16,11 @@ const Home = () => {
           Join now to get access to exclusive features!
         </p>
       </div>
+      <div>
+        <video className="preview-vid" width="90%" autoPlay loop muted>
+          <source src="/markd.webm" type="video/webm" />
+        </video>
+      </div>
     </div>
   );
 };
