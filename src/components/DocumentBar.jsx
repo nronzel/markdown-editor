@@ -40,6 +40,7 @@ const DocumentBar = ({
         <FontAwesomeIcon
           icon={faBars}
           className="drawer-icon"
+          data-testid="drawer-icon"
           onClick={toggleDrawer}
         />
         {currentUser && currentUser.isAnonymous ? (
@@ -72,6 +73,7 @@ const DocumentBar = ({
             <FontAwesomeIcon
               icon={faCheck}
               onClick={toggleEditMode}
+              data-testid="accept-btn"
               className="accept-btn"
             />
           </>
@@ -80,6 +82,7 @@ const DocumentBar = ({
             {documentName}{" "}
             <FontAwesomeIcon
               className="edit-btn"
+              data-testid="edit-btn"
               icon={faPenToSquare}
               onClick={toggleEditMode}
             />
@@ -87,7 +90,11 @@ const DocumentBar = ({
         )}
       </div>
       <div className="right-bar">
-        <button onClick={handleNewDocument} className="new-doc-btn">
+        <button
+          onClick={handleNewDocument}
+          className="new-doc-btn"
+          data-testid="new-doc-btn"
+        >
           <FontAwesomeIcon className="new-doc" icon={faFileCirclePlus} />
         </button>
       </div>

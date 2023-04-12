@@ -10,7 +10,7 @@ const btnStyle = {
 
 const SaveButton = ({ saveDocument }) => {
   return (
-    <button style={btnStyle} onClick={saveDocument}>
+    <button style={btnStyle} onClick={saveDocument} data-testid="save-btn">
       <FontAwesomeIcon icon={faFloppyDisk} />
     </button>
   );
