@@ -30,7 +30,11 @@ const Header = () => {
         <h2 className="logo-text">
           <NavLink to="/" className="logo-text">
             Markd
-            <FontAwesomeIcon style={{ paddingLeft: "5px" }} icon={faDownLong} />
+            <FontAwesomeIcon
+              color="white"
+              style={{ paddingLeft: "5px" }}
+              icon={faDownLong}
+            />
           </NavLink>
         </h2>
         <div className="hstack">

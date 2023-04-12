@@ -29,6 +29,7 @@ const FieldUpdater = ({
           type={fieldType}
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          className="new-value"
         />
         <button className="profile-btn" type="button" onClick={handleSubmit}>
           Save

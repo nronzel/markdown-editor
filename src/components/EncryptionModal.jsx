@@ -83,6 +83,7 @@ const EncryptionModal = () => {
               value={encryptionPassword}
               type="password"
               required
+              className="encryption-input"
             />
             <button className="btn" onClick={handleSubmit} disabled={!userSalt}>
               Submit

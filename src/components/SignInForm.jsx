@@ -21,6 +21,7 @@ const SignInForm = ({
           placeholder="example@example.com"
           onChange={(e) => setEmail(e.target.value)}
           required
+          className="signin-input"
         />
         <label htmlFor="password">Password</label>
         <input
@@ -28,10 +29,11 @@ const SignInForm = ({
           id="password"
           required
           onChange={(e) => setPassword(e.target.value)}
+          className="signin-input"
         />
         <div className="button-box">
           <button className="signin-button" onClick={login}>
-           <span className="button-text">Log In</span>
+            <span className="button-text">Log In</span>
           </button>
           <button className="google-signin-button" onClick={signInWithGoogle}>
             Sign In With Google

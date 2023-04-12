@@ -69,11 +69,11 @@ const DocumentDrawer = React.forwardRef(
           <h3>Saved Documents</h3>
         </div>
         <div className="doc-list">
-          <ul>
+          <ul className="u-list">
             {decryptedDocuments.map((doc) => (
               <li
                 key={doc.id}
-                className={doc.id === openedDocumentId ? "active" : ""}
+                className={doc.id === openedDocumentId ? "list active" : "list"}
               >
                 <button
                   className="del-btn"
