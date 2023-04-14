@@ -24,6 +24,8 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
+> Note: To use this app locally, you will need a .env file at the root of the project directory with the necessary API keys for Firebase.
+
 Clone this repository to a local directory, move into the directory, and install the dependencies
 
 ```bash
