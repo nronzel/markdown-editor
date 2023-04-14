@@ -50,6 +50,18 @@ export async function decryptDocuments(userDocuments, encryptionKey) {
   return decryptedDocs;
 }
 
+export const updateUserDocuments = (userDocuments, newDocument) => {
+  return [...userDocuments, newDocument];
+};
+
+export const deleteUserDocument = (userDocuments, docId) => {
+  return userDocuments.filter((doc) => doc.id !== docId);
+};
+
+export const openDocument = (id, content, name) => {
+  return { openedDocumentId: id, markdown: content, documentName: name };
+};
+
 const updateExistingDocument = async (
   openedDocumentId,
   base64EncryptedText,

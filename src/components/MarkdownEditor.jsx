@@ -7,7 +7,12 @@ import DocumentDrawer from "./DocumentDrawer";
 import Editor from "./Editor";
 import Preview from "./Preview";
 import DocumentBar from "./DocumentBar.jsx";
-import { saveDocument } from "../utils/documentActions";
+import {
+  saveDocument,
+  updateUserDocuments,
+  deleteUserDocument,
+  openDocument,
+} from "../utils/documentActions";
 
 const MarkdownEditor = ({ currentUser, encryptionKey }) => {
   const [markdown, setMarkdown] = useState("");
@@ -18,20 +23,23 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
   const [openedDocumentId, setOpenedDocumentId] = useState(null);
   const drawerRef = useRef(null);
 
-  const updateUserDocuments = (newDocument) => {
-    setUserDocuments([...userDocuments, newDocument]);
+  const handleUpdateUserDocuments = (newDocument) => {
+    setUserDocuments(updateUserDocuments(userDocuments, newDocument));
   };
 
-  const deleteUserDocument = (docId) => {
-    setUserDocuments((prevUserDocuments) =>
-      prevUserDocuments.filter((doc) => doc.id !== docId)
+  const handleDeleteUserDocument = (docId) => {
+    setUserDocuments(deleteUserDocument(userDocuments, docId));
+  };
+
+  const handleOpenDocument = (id, content, name) => {
+    const { openedDocumentId, markdown, documentName } = openDocument(
+      id,
+      content,
+      name
     );
-  };
-
-  const openDocument = (id, content, name) => {
-    setOpenedDocumentId(id);
-    setMarkdown(content);
-    setDocumentName(name);
+    setOpenedDocumentId(openedDocumentId);
+    setMarkdown(markdown);
+    setDocumentName(documentName);
   };
 
   const clearStatusMessage = () => {
@@ -135,12 +143,12 @@ const MarkdownEditor = ({ currentUser, encryptionKey }) => {
           ref={drawerRef}
           userDocuments={userDocuments}
           encryptionKey={encryptionKey}
-          updateUserDocuments={updateUserDocuments}
-          openDocument={openDocument}
+          updateUserDocuments={handleUpdateUserDocuments}
+          openDocument={handleOpenDocument}
           handleNewDocument={handleNewDocument}
           setOpenedDocumentId={setOpenedDocumentId}
           openedDocumentId={openedDocumentId}
-          deleteUserDocument={deleteUserDocument}
+          deleteUserDocument={handleDeleteUserDocument}
         />
       )}
       <div className="main-section">
