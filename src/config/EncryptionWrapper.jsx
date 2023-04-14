@@ -33,7 +33,7 @@ export const EncryptionPasswordProvider = ({ children }) => {
       {
         name: "PBKDF2",
         salt: saltBuffer,
-        iterations: 1000,
+        iterations: 50000,
         hash: "SHA-256",
       },
       key,
