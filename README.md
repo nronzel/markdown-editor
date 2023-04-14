@@ -52,6 +52,7 @@ npm run preview
 Navigate to `localhost:4173` in your browser to view the site.
 
 ## Usage
+[VISIT THE SITE](https://markddown.netlify.app/)
 
 You can try it out with the button on the home page. If you would like to save your documents for later retrieval or updating your can create
 an account, set your encryption key, and your documents will be encrypted and saved with AES 256-bit encryption.
