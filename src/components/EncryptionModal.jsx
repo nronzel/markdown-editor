@@ -89,8 +89,8 @@ const EncryptionModal = () => {
               Submit
             </button>
             <p className="small">
-              Do not forget your encryption password! There is no way to recover
-              it if it is forgotten!
+              Do not forget your encryption password! It cannot be recovered if
+              lost/forgotten!
             </p>
           </div>
         </div>
