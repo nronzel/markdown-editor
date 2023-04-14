@@ -23,7 +23,7 @@ export const encryptMarkdown = async (markdown, encryptionKey) => {
   return { base64EncryptedText, iv };
 };
 
-export async function decryptDocuments(userDocuments, encryptionKey) {
+export const decryptDocuments = async (userDocuments, encryptionKey) => {
   const decryptedDocs = [];
   for (const doc of userDocuments) {
     try {
@@ -48,7 +48,7 @@ export async function decryptDocuments(userDocuments, encryptionKey) {
     }
   }
   return decryptedDocs;
-}
+};
 
 export const updateUserDocuments = (userDocuments, newDocument) => {
   return [...userDocuments, newDocument];
@@ -195,7 +195,7 @@ export const saveDocument = async (
   fetchUserDocuments();
 };
 
-export function arrayBufferToBase64(buffer) {
+export const arrayBufferToBase64 = (buffer) => {
   let binary = "";
   const bytes = new Uint8Array(buffer);
   const len = bytes.byteLength;
@@ -203,9 +203,9 @@ export function arrayBufferToBase64(buffer) {
     binary += String.fromCharCode(bytes[i]);
   }
   return window.btoa(binary);
-}
+};
 
-export function base64ToArrayBuffer(base64) {
+export const base64ToArrayBuffer = (base64) => {
   const sanitizedBase64 = base64
     .replace(/[\s\r\n]+$/, "")
     .replace(/[^A-Za-z0-9+/]/g, "");
@@ -215,4 +215,4 @@ export function base64ToArrayBuffer(base64) {
     bytes[i] = binaryString.charCodeAt(i);
   }
   return bytes.buffer;
-}
+};
