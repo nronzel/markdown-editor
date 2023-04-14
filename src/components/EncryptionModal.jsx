@@ -71,6 +71,12 @@ const EncryptionModal = () => {
     }
   };
 
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <>
       {!isCorrectPassword && (
@@ -84,6 +90,8 @@ const EncryptionModal = () => {
               value={encryptionPassword}
               type="password"
               required
+              onKeyDown={handleEnterKey}
+              autoFocus
             />
             <button className="btn" onClick={handleSubmit} disabled={!userSalt}>
               Submit
