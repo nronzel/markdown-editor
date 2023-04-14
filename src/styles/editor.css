@@ -97,6 +97,7 @@ a {
     gap: 10px;
     flex-shrink: 0;
     width: 90vw;
+    margin-top: 25px;
   }
 
   .container {

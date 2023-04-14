@@ -14,7 +14,7 @@
   text-align: left;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .drawer-icon:hover {
@@ -52,6 +52,12 @@
   cursor: pointer;
 }
 
+.edit-name {
+  height: 30px;
+  padding: 0px 5px;
+  border-radius: 5px;
+}
+
 .new-doc-btn {
   padding: 0;
   width: 3rem;
@@ -78,6 +84,5 @@ span {
 }
 
 .accept-btn {
-    cursor: pointer;
+  cursor: pointer;
 }
-

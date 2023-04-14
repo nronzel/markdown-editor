@@ -4,11 +4,16 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  background-color: #212121;
+  padding: 35px;
+  border-radius: 10px;
 }
 
 .encryption-input {
   height: 45px;
-  padding: 10px 20px;
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: none;
 }
 
 .overlay {
@@ -29,6 +34,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5px;
 }
 
 .btn {
