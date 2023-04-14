@@ -81,3 +81,4 @@ Getting the backend set up was actually really easy with Firebase. The documenta
 One major lesson I learned from this project is to focus on getting the main functionality there first, THEN worry about details. I got lost in the encryption of the data
 before all of the functionality was even present, and it definitely cost me more time and headaches than it should have.
 
+---
