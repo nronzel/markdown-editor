@@ -64,23 +64,13 @@
   cursor: pointer;
 }
 
-span {
-  cursor: pointer;
-}
-
 .link {
-  text-decoration: underline;
-  text-decoration-color: white;
-  text-underline-offset: 2px;
-  text-decoration-thickness: 2px;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .link:hover {
-  text-decoration: underline;
-  text-decoration-color: white;
-  text-underline-offset: 5px;
-  text-decoration-thickness: 3px;
+  transform: scale(1.1);
 }
 
 .accept-btn {
