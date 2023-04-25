@@ -23,6 +23,35 @@ a {
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  resize: none;
+}
+
+textarea {
+  resize: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-track {
+  background: #212121;
+  margin: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #818181;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #717171;
+  cursor: default;
 }
 
 .preview-head {
