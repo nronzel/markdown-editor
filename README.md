@@ -1,8 +1,8 @@
-# MarkdDown ![language](https://img.shields.io/github/languages/top/nronzel/markdown-editor) ![vite](https://img.shields.io/badge/Build-Vite-ffc51d) ![react](https://img.shields.io/badge/Framework-React-149eca)
+# Markd ![language](https://img.shields.io/github/languages/top/nronzel/markdown-editor) ![vite](https://img.shields.io/badge/Build-Vite-ffc51d) ![react](https://img.shields.io/badge/Framework-React-149eca)
 
 ## Description
 
-MarkdDown is an in-browser Markdown editor. I created this project as my first full stack application
+Markd is an in-browser Markdown editor. I created this project as my first full stack application
 using a BaaS (Firebase). A lot was learned from making this project -- I will include details in a later section.
 The goals of this project were to:
 
