@@ -1,8 +1,8 @@
-# Markd ![language](https://img.shields.io/github/languages/top/nronzel/markdown-editor) ![vite](https://img.shields.io/badge/Build-Vite-ffc51d) ![react](https://img.shields.io/badge/Framework-React-149eca)
+# MarkdDown ![language](https://img.shields.io/github/languages/top/nronzel/markdown-editor) ![vite](https://img.shields.io/badge/Build-Vite-ffc51d) ![react](https://img.shields.io/badge/Framework-React-149eca)
 
 ## Description
 
-Markd is an in-browser Markdown editor. I created this project as my first full stack application
+MarkdDown is an in-browser Markdown editor. I created this project as my first full stack application
 using a BaaS (Firebase). A lot was learned from making this project -- I will include details in a later section.
 The goals of this project were to:
 
@@ -54,9 +54,10 @@ npm run preview
 Navigate to `localhost:4173` in your browser to view the site.
 
 ## Usage
+
 [VISIT THE SITE](https://markddown.netlify.app/)
 
-You can try it out with the button on the home page. If you would like to save your documents for later retrieval or updating your can create
+You can try it out with the button on the home page. If you would like to save your documents for later retrieval or updating you can create
 an account, set your encryption key, and your documents will be encrypted and saved with AES 256-bit encryption.
 
 ![preview image](./public/markd-ss.png)
@@ -64,7 +65,6 @@ an account, set your encryption key, and your documents will be encrypted and sa
 ## Credits
 
 [React Markdown](https://github.com/remarkjs/react-markdown)
-
 
 ## Lessons
 
@@ -91,11 +91,13 @@ If I had tested while making the components, I would have been forced to make th
 
 To me this was one of the biggest lessons learned from this project, and going forward I will keep this in mind and try to implement proper TDD.
 
-
 ## Possible Future Features
+
 - download documents locally
 - share documents
 - templates (Github readme templates, etc.)
 - alternate sign-in methods (Github, Facebook, etc.)
+
+> final note: the security of my encryption implementation has not been verified or tested. The data does get encrypted before being stored, however I cannot verify the security of the encryption as I am not a security professional. All encryption should be fully vetted and tested before being trusted with your sensitive documents!
 
 ---
