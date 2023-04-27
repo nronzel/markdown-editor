@@ -97,6 +97,7 @@ To me this was one of the biggest lessons learned from this project, and going f
 - share documents
 - templates (Github readme templates, etc.)
 - alternate sign-in methods (Github, Facebook, etc.)
+- styled alert boxes
 
 > final note: the security of my encryption implementation has not been verified or tested. The data does get encrypted before being stored, however I cannot verify the security of the encryption as I am not a security professional. All encryption should be fully vetted and tested before being trusted with your sensitive documents!
 
