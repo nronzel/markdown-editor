@@ -76,7 +76,7 @@ const VerifyEmail = () => {
       <Header />
       <div style={boxStyle}>
         <h3>Verify Your Email Address</h3>
-        <p>A verification email has been sent to:{currentUser?.email}</p>
+        <p>A verification email has been sent to: {currentUser?.email}</p>
         <button onClick={resendEmailVerification} disabled={timeActive}>
           Resend Email {timeActive && time}
         </button>
