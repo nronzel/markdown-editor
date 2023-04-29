@@ -53,6 +53,11 @@ const EncryptionModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (encryptionPassword.length < 8) {
+      setErrorMessage("Password must be at least 8 characters");
+      return;
+    }
+
     const isPasswordCorrect = await handleEncryptionKeyEntered(
       encryptionPassword,
       userSalt
